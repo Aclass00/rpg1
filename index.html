@@ -650,6 +650,7 @@
                 `;
 
                 this.setupMainEvents();
+                this.setupMissionButtons();
             }
 
             renderDailyMissions() {
@@ -670,7 +671,7 @@
                             <div>
                                 ${completed ? 
                                     '<span style="color: #4CAF50;">✅ مكتملة</span>' :
-                                    `<button onclick="gameApp.claimMission(${index})" ${mission.progress >= mission.target ? '' : 'disabled'}>
+                                    `<button class="claim-mission-btn" data-index="${index}" ${mission.progress >= mission.target ? '' : 'disabled'}>
                                         استلام (${mission.rewards.exp} خبرة + ${mission.rewards.gold} ذهب + ${mission.rewards.energy} طاقة)
                                     </button>`
                                 }
@@ -700,6 +701,16 @@
                 this.savePlayerData();
                 this.showMainPage();
                 utils.showMessage('🎉 تم استلام مكافأة المهمة!', 'success');
+            }
+
+            setupMissionButtons() {
+                const self = this;
+                const missionButtons = document.querySelectorAll('.mission-item button');
+                missionButtons.forEach(function(btn, index) {
+                    btn.addEventListener('click', function() {
+                        self.claimMission(index);
+                    });
+                });
             }
 
             checkLevelUp() {
@@ -755,7 +766,7 @@
                         
                         <div style="text-align: center; margin-bottom: 20px;">
                             <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; display: inline-block;">
-                                <h3>🎴 البطاقات المتبقية: ${this.playerData.resources.dailyCards}</h3>
+                                <h3 id="cardsDisplay">🎴 البطاقات المتبقية: ${this.playerData.resources.dailyCards}</h3>
                             </div>
                         </div>
 
@@ -765,7 +776,7 @@
                                 <p>يعطي قطع عتاد عشوائية</p>
                                 <p style="font-size: 0.9em; opacity: 0.8;">10 بطاقات = قطعة عتاد</p>
                                 <input type="number" id="gearCards" min="10" max="${this.playerData.resources.dailyCards}" step="10" value="10" />
-                                <button onclick="gameApp.enterMine('gear')">دخول المنجم</button>
+                                <button id="gearMineBtn">دخول المنجم</button>
                                 <div id="gearReward"></div>
                             </div>
 
@@ -774,7 +785,7 @@
                                 <p>يعطي ذهب وفرصة نقاط طاقة</p>
                                 <p style="font-size: 0.9em; opacity: 0.8;">5 بطاقات = 5,000-10,000 ذهب</p>
                                 <input type="number" id="goldCards" min="5" max="${this.playerData.resources.dailyCards}" step="5" value="5" />
-                                <button onclick="gameApp.enterMine('gold')">دخول المنجم</button>
+                                <button id="goldMineBtn">دخول المنجم</button>
                                 <div id="goldReward"></div>
                             </div>
 
@@ -783,7 +794,7 @@
                                 <p>يعطي أحجار لتطوير العتاد</p>
                                 <p style="font-size: 0.9em; opacity: 0.8;">10 بطاقات = 3-7 أحجار</p>
                                 <input type="number" id="stoneCards" min="10" max="${this.playerData.resources.dailyCards}" step="10" value="10" />
-                                <button onclick="gameApp.enterMine('stone')">دخول المنجم</button>
+                                <button id="stoneMineBtn">دخول المنجم</button>
                                 <div id="stoneReward"></div>
                             </div>
                         </div>
@@ -792,6 +803,18 @@
 
                 document.getElementById('backBtn').addEventListener('click', function() {
                     self.showMainPage();
+                });
+
+                document.getElementById('gearMineBtn').addEventListener('click', function() {
+                    self.enterMine('gear');
+                });
+
+                document.getElementById('goldMineBtn').addEventListener('click', function() {
+                    self.enterMine('gold');
+                });
+
+                document.getElementById('stoneMineBtn').addEventListener('click', function() {
+                    self.enterMine('stone');
                 });
             }
 
@@ -910,7 +933,7 @@
                 this.savePlayerData();
                 
                 document.getElementById(type + 'Reward').innerHTML = reward;
-                document.querySelector('.main-container h3').innerHTML = `🎴 البطاقات المتبقية: ${this.playerData.resources.dailyCards}`;
+                document.getElementById('cardsDisplay').innerHTML = `🎴 البطاقات المتبقية: ${this.playerData.resources.dailyCards}`;
                 
                 utils.showMessage('✅ تم الدخول للمنجم بنجاح!', 'success');
             }
@@ -953,7 +976,7 @@
                         
                         <div style="text-align: center; margin-bottom: 20px;">
                             <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; display: inline-block;">
-                                <h3>⚡ نقاط الطاقة المتبقية: ${this.playerData.resources.energyPoints || 0}</h3>
+                                <h3 id="energyDisplay">⚡ نقاط الطاقة المتبقية: ${this.playerData.resources.energyPoints || 0}</h3>
                                 <p style="font-size: 0.9em; opacity: 0.8;">كل تغيير = 1 نقطة طاقة</p>
                             </div>
                         </div>
@@ -969,6 +992,25 @@
 
                 document.getElementById('backBtn').addEventListener('click', function() {
                     self.showMainPage();
+                });
+
+                // إضافة event listeners لجميع أزرار البوابات
+                const changeButtons = document.querySelectorAll('.btn-change');
+                changeButtons.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const gateId = this.getAttribute('data-gate');
+                        const stat = this.getAttribute('data-stat');
+                        self.changeGateStat(gateId, stat);
+                    });
+                });
+
+                const saveButtons = document.querySelectorAll('.btn-save');
+                saveButtons.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const gateId = this.getAttribute('data-gate');
+                        const stat = this.getAttribute('data-stat');
+                        self.saveGateStat(gateId, stat);
+                    });
                 });
             }
 
@@ -1005,8 +1047,8 @@
                     <div class="gate-stat">
                         <span>${label}: <strong id="${gateId}-${stat}-value">${value}</strong></span>
                         <div>
-                            <button class="btn-change" onclick="gameApp.changeGateStat('${gateId}', '${stat}')">تغيير</button>
-                            <button class="btn-save" onclick="gameApp.saveGateStat('${gateId}', '${stat}')">حفظ</button>
+                            <button class="btn-change" data-gate="${gateId}" data-stat="${stat}" data-action="change">تغيير</button>
+                            <button class="btn-save" data-gate="${gateId}" data-stat="${stat}" data-action="save">حفظ</button>
                         </div>
                     </div>
                 `;
@@ -1028,7 +1070,7 @@
                 }
 
                 // تحديث نقاط الطاقة المعروضة
-                const energyDisplay = document.querySelector('.main-container h3');
+                const energyDisplay = document.getElementById('energyDisplay');
                 if (energyDisplay) {
                     energyDisplay.innerHTML = `⚡ نقاط الطاقة المتبقية: ${this.playerData.resources.energyPoints}`;
                 }
