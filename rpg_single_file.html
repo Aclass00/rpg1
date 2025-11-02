@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة الأبطال - RPG</title>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            color: white;
+            direction: rtl;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-form h1 {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            text-align: right;
+            color: #333;
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .login-form button:hover {
+            background: #45a049;
+        }
+
+        #registerBtn {
+            background: #2196F3;
+        }
+
+        #registerBtn:hover {
+            background: #1976D2;
+        }
+
+        .success {
+            color: #4CAF50;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #f44336;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .game-header button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            background: #f44336;
+            color: white;
+            font-size: 16px;
+        }
+
+        .player-stats, .resources {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .action-btn {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            z-index: 1000;
+            font-weight: bold;
+            max-width: 300px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .login-form {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .login-form h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="loading">
+            <div class="loading-spinner"></div>
+            <h2>جاري التحميل...</h2>
+        </div>
+    </div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBQIcqbTtJY0xoaeL2FN1L-Zf5IGw59H3w",
+            authDomain: "rpg-browser-game-ece4b.firebaseapp.com",
+            databaseURL: "https://rpg-browser-game-ece4b-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "rpg-browser-game-ece4b",
+            storageBucket: "rpg-browser-game-ece4b.firebasestorage.app",
+            messagingSenderId: "609571218561",
+            appId: "1:609571218561:web:7c92d009bac5a047c2d980",
+            measurementId: "G-EK6K14SXM7"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        const utils = {
+            formatNumber: function(num) {
+                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            },
+            showMessage: function(message, type) {
+                type = type || 'info';
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message';
+                messageDiv.innerHTML = message;
+                messageDiv.style.background = type === 'error' ? '#f44336' : type === 'success' ? '#4CAF50' : '#2196F3';
+                document.body.appendChild(messageDiv);
+                setTimeout(function() {
+                    messageDiv.remove();
+                }, 3000);
+            }
+        };
+
+        class GameApp {
+            constructor() {
+                this.playerData = null;
+            }
+
+            init(user) {
+                const self = this;
+                console.log('Loading player data...');
+                this.loadPlayerData(user).then(function() {
+                    self.showMainPage();
+                }).catch(function(error) {
+                    console.error('Error loading data:', error);
+                    utils.showMessage('خطأ في تحميل البيانات', 'error');
+                });
+            }
+
+            loadPlayerData(user) {
+                const self = this;
+                return db.collection('players').doc(user.uid).get().then(function(doc) {
+                    if (doc.exists) {
+                        self.playerData = doc.data();
+                        console.log('Player data loaded');
+                    } else {
+                        throw new Error('بيانات اللاعب غير موجودة');
+                    }
+                });
+            }
+
+            showMainPage() {
+                const self = this;
+                document.getElementById('app').innerHTML = `
+                    <div class="main-container">
+                        <header class="game-header">
+                            <h1>🎮 ${this.playerData.displayName}</h1>
+                            <button id="logoutBtn">تسجيل الخروج</button>
+                        </header>
+                        
+                        <div class="player-stats">
+                            <h2>📊 إحصائياتك</h2>
+                            <div class="stats-grid">
+                                <div class="stat">❤️ الصحة: ${utils.formatNumber(this.playerData.stats.health)}</div>
+                                <div class="stat">⚔️ الهجوم: ${utils.formatNumber(this.playerData.stats.physicalAttack)}</div>
+                                <div class="stat">🛡️ الدفاع: ${utils.formatNumber(this.playerData.stats.physicalDefense)}</div>
+                                <div class="stat">🎯 الحرج: ${this.playerData.stats.criticalChance}%</div>
+                            </div>
+                        </div>
+
+                        <div class="resources">
+                            <h2>🎴 البطاقات: ${this.playerData.resources.dailyCards}/100</h2>
+                            <h3>💰 الذهب: ${utils.formatNumber(this.playerData.resources.gold)}</h3>
+                        </div>
+
+                        <div class="actions">
+                            <button class="action-btn" id="gatesBtn">🎯 البوابات الأربع</button>
+                            <button class="action-btn" id="minesBtn">⛏️ المناجم</button>
+                            <button class="action-btn" id="gearBtn">⚔️ العتاد</button>
+                            <button class="action-btn" id="leaderboardBtn">🏆 المتصدرين</button>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('logoutBtn').addEventListener('click', function() {
+                    auth.signOut();
+                });
+
+                document.getElementById('gatesBtn').addEventListener('click', function() {
+                    utils.showMessage('🎯 نظام البوابات قريباً!', 'info');
+                });
+
+                document.getElementById('minesBtn').addEventListener('click', function() {
+                    utils.showMessage('⛏️ نظام المناجم قريباً!', 'info');
+                });
+
+                document.getElementById('gearBtn').addEventListener('click', function() {
+                    utils.showMessage('⚔️ نظام العتاد قريباً!', 'info');
+                });
+
+                document.getElementById('leaderboardBtn').addEventListener('click', function() {
+                    utils.showMessage('🏆 لوحة المتصدرين قريباً!', 'info');
+                });
+            }
+        }
+
+        class AuthSystem {
+            constructor() {
+                this.user = null;
+                this.gameApp = new GameApp();
+                this.init();
+            }
+
+            init() {
+                const self = this;
+                console.log('Initializing auth system...');
+                auth.onAuthStateChanged(function(user) {
+                    console.log('User state:', user ? 'logged in' : 'not logged in');
+                    self.user = user;
+                    self.onAuthStateChange(user);
+                });
+            }
+
+            register(email, password, displayName) {
+                const self = this;
+                console.log('Creating new account...');
+                return auth.createUserWithEmailAndPassword(email, password)
+                    .then(function(result) {
+                        return result.user.updateProfile({ displayName: displayName })
+                            .then(function() {
+                                return self.createPlayerData(result.user.uid, displayName);
+                            })
+                            .then(function() {
+                                return { success: true, user: result.user };
+                            });
+                    })
+                    .catch(function(error) {
+                        console.error('Error creating account:', error);
+                        return { success: false, error: self.getArabicError(error.code) };
+                    });
+            }
+
+            createPlayerData(userId, displayName) {
+                console.log('Creating player data...');
+                const playerData = {
+                    displayName: displayName,
+                    stats: {
+                        health: 1000,
+                        physicalAttack: 100,
+                        magicalAttack: 80,
+                        physicalDefense: 80,
+                        magicalDefense: 60,
+                        criticalChance: 5,
+                        speed: 10,
+                        luck: 5
+                    },
+                    resources: {
+                        dailyCards: 100,
+                        gold: 500,
+                        commonStones: 10,
+                        qualityStones: 5
+                    },
+                    gear: {
+                        helmet: null,
+                        amulet: null,
+                        ring: null,
+                        weapon: null,
+                        boots: null,
+                        chest: null
+                    },
+                    progress: {
+                        level: 1,
+                        totalUpgrades: 0,
+                        mineEntries: 0,
+                        lastDailyReset: new Date().toISOString()
+                    },
+                    createdAt: new Date().toISOString(),
+                    lastLogin: new Date().toISOString()
+                };
+
+                return db.collection('players').doc(userId).set(playerData)
+                    .then(function() {
+                        console.log('Player data created');
+                    });
+            }
+
+            login(email, password) {
+                const self = this;
+                console.log('Logging in...');
+                return auth.signInWithEmailAndPassword(email, password)
+                    .then(function(result) {
+                        return { success: true, user: result.user };
+                    })
+                    .catch(function(error) {
+                        console.error('Error logging in:', error);
+                        return { success: false, error: self.getArabicError(error.code) };
+                    });
+            }
+
+            onAuthStateChange(user) {
+                if (user) {
+                    console.log('User logged in');
+                    this.gameApp.init(user);
+                } else {
+                    console.log('Showing login page');
+                    this.showLogin();
+                }
+            }
+
+            showLogin() {
+                const self = this;
+                document.getElementById('app').innerHTML = `
+                    <div class="login-container">
+                        <div class="login-form">
+                            <h1>🎮 لعبة الأبطال</h1>
+                            <form id="authForm">
+                                <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+                                <input type="password" id="password" placeholder="كلمة المرور" required>
+                                <input type="text" id="displayName" placeholder="اسم اللاعب (للمستخدمين الجدد)">
+                                <button type="submit" id="loginBtn">تسجيل الدخول</button>
+                                <button type="button" id="registerBtn">إنشاء حساب</button>
+                            </form>
+                            <div id="authMessage"></div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('loginBtn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    self.handleLogin();
+                });
+
+                document.getElementById('registerBtn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    self.handleRegister();
+                });
+            }
+
+            handleLogin() {
+                const self = this;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                if (!email || !password) {
+                    this.showAuthMessage({ success: false, error: 'يرجى إدخال البريد الإلكتروني وكلمة المرور' });
+                    return;
+                }
+
+                this.login(email, password).then(function(result) {
+                    self.showAuthMessage(result);
+                });
+            }
+
+            handleRegister() {
+                const self = this;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const displayName = document.getElementById('displayName').value;
+                
+                if (!displayName) {
+                    this.showAuthMessage({ success: false, error: 'يرجى إدخال اسم اللاعب' });
+                    return;
+                }
+
+                if (password.length < 6) {
+                    this.showAuthMessage({ success: false, error: 'كلمة المرور يجب أن تكون 6 أحرف على الأقل' });
+                    return;
+                }
+
+                this.register(email, password, displayName).then(function(result) {
+                    self.showAuthMessage(result);
+                });
+            }
+
+            showAuthMessage(result) {
+                const messageDiv = document.getElementById('authMessage');
+                if (result.success) {
+                    messageDiv.innerHTML = '<p class="success">✅ تم بنجاح!</p>';
+                } else {
+                    messageDiv.innerHTML = '<p class="error">❌ ' + result.error + '</p>';
+                }
+            }
+
+            getArabicError(errorCode) {
+                const errors = {
+                    'auth/invalid-email': 'البريد الإلكتروني غير صحيح',
+                    'auth/user-disabled': 'هذا الحساب معطل',
+                    'auth/user-not-found': 'المستخدم غير موجود',
+                    'auth/wrong-password': 'كلمة المرور غير صحيحة',
+                    'auth/email-already-in-use': 'البريد الإلكتروني مستخدم بالفعل',
+                    'auth/weak-password': 'كلمة المرور ضعيفة جداً',
+                    'auth/network-request-failed': 'خطأ في الاتصال بالإنترنت'
+                };
+                return errors[errorCode] || 'حدث خطأ: ' + errorCode;
+            }
+        }
+
+        let authSystem;
+        window.addEventListener('load', function() {
+            console.log('Page loaded - Starting app');
+            authSystem = new AuthSystem();
+        });
+    </script>
+</body>
+</html>
