@@ -512,6 +512,7 @@
             init(user) {
                 const self = this;
                 this.userId = user.uid;
+                window.gameApp = this; // جعل gameApp متاح عالمياً
                 console.log('Loading player data...');
                 this.loadPlayerData(user).then(function() {
                     self.checkDailyReset();
@@ -1311,13 +1312,10 @@
         }
 
         let authSystem;
-        let gameApp;
         window.addEventListener('load', function() {
             console.log('Page loaded - Starting app');
             authSystem = new AuthSystem();
         });
-
-        window.gameApp = new GameApp();
     </script>
 </body>
 </html>
