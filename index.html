@@ -1479,6 +1479,9 @@
                                 <button class="btn-change" data-action="upgrade-quality" data-index="${index}" style="width: 100%; padding: 8px; background: #9C27B0;">
                                     ${self.getNextQuality(item.quality) ? `ترقية → ${self.getNextQuality(item.quality)} (${self.getUpgradeQualityCost(item)} حجر + ${self.getUpgradeQualityGold(item)} ذهب)` : 'الحد الأقصى'}
                                 </button>
+                                <button data-action="salvage" data-index="${index}" style="width: 100%; padding: 8px; background: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                                    🔨 تفكيك → (${self.getSalvageRewards(item)})
+                                </button>
                             </div>
                         </div>
                     `;
@@ -1519,6 +1522,36 @@
                 return index < order.length - 1 ? order[index + 1] : null;
             }
 
+            getSalvageRewards(item) {
+                const qualityRewards = {
+                    'عادي': { levelStones: [1, 2], qualityStones: 0, gold: [100, 300] },
+                    'نقي': { levelStones: [2, 3], qualityStones: 1, gold: [500, 800] },
+                    'فريد': { levelStones: [3, 5], qualityStones: 2, gold: [1000, 1500] },
+                    'راقي': { levelStones: [5, 8], qualityStones: [3, 5], gold: [2000, 3000] },
+                    'فاخر': { levelStones: 10, qualityStones: 8, gold: [5000, 8000] }
+                };
+
+                const rewards = qualityRewards[item.quality];
+                let text = '';
+
+                if (Array.isArray(rewards.levelStones)) {
+                    text += `${rewards.levelStones[0]}-${rewards.levelStones[1]} 🔷`;
+                } else {
+                    text += `${rewards.levelStones} 🔷`;
+                }
+
+                if (rewards.qualityStones > 0) {
+                    if (Array.isArray(rewards.qualityStones)) {
+                        text += ` + ${rewards.qualityStones[0]}-${rewards.qualityStones[1]} 💎`;
+                    } else {
+                        text += ` + ${rewards.qualityStones} 💎`;
+                    }
+                }
+
+                text += ` + ${rewards.gold[0]}-${rewards.gold[1]} 💰`;
+                return text;
+            }
+
             setupGearEvents() {
                 const self = this;
                 
@@ -1547,6 +1580,13 @@
                     btn.addEventListener('click', function() {
                         const index = parseInt(this.getAttribute('data-index'));
                         self.upgradeQualityItem(index);
+                    });
+                });
+
+                document.querySelectorAll('[data-action="salvage"]').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        self.salvageItem(index);
                     });
                 });
 
