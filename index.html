@@ -744,7 +744,7 @@
 
                         <div class="actions">
                             <button class="action-btn" id="minesBtn">⛏️ المناجم</button>
-                            <button class="action-btn" id="gatesBtn">⚡ البوابات الأربع</button>
+                            <button class="action-btn" id="gatesBtn">⚡ القوة الداخلية</button>
                             <button class="action-btn" id="gearBtn">⚔️ العتاد</button>
                             <button class="action-btn" id="profileBtn">👤 الملف الشخصي</button>
                             <button class="action-btn" id="playersBtn">👥 اللاعبين</button>
@@ -1226,8 +1226,8 @@
 
                 document.getElementById('app').innerHTML = `
                     <div class="main-container">
-                        <button class="back-btn" id="backBtn">← رجوع</button>
-                        <h1 style="text-align: center; margin-bottom: 30px;">⚡ البوابات الأربع</h1>
+                        <button class="back-btn" id="backBtn">رجوع</button>
+                        <h1 style="text-align: center; margin-bottom: 30px;">⚡ القوة الداخلية</h1>
                         
                         <div style="text-align: center; margin-bottom: 20px;">
                             <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; display: inline-block;">
@@ -1237,10 +1237,10 @@
                         </div>
 
                         <div class="gates-container">
-                            ${this.renderGate('lion', '🦁 بوابة الأسد', 'بونص: +3000 نقاط حياة (عند 400+)')}
-                            ${this.renderGate('dragon', '🐉 بوابة التنين', 'بونص: +200 هجوم جسدي (عند 400+)')}
-                            ${this.renderGate('phoenix', '🦅 بوابة العنقاء', 'بونص: +150 دفاع جسدي/سحري (عند 400+)')}
-                            ${this.renderGate('wolf', '🐺 بوابة الذئب', 'بونص: +10% حاسمة (عند 400+)')}
+                            ${this.renderGate('lion', '🦁 بوابة الأسد', 'بونص: +3000 نقاط حياة (أول 3)')}
+                            ${this.renderGate('dragon', '🐉 بوابة التنين', 'بونص: +200 هجوم جسدي (أول 3)')}
+                            ${this.renderGate('phoenix', '🦅 بوابة العنقاء', 'بونص: +150 دفاع جسدي/سحري (أول 3)')}
+                            ${this.renderGate('wolf', '🐺 بوابة الذئب', 'بونص: +10% حاسمة (أول 3)')}
                         </div>
                     </div>
                 `;
