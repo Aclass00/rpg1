@@ -672,6 +672,10 @@
 
             showMainPage() {
                 const self = this;
+                
+                // تطبيق إحصائيات العتاد والبوابات
+                this.applyAllBonuses();
+                
                 const expNeeded = utils.calculateExpForLevel(this.playerData.progress.level);
                 const expProgress = (this.playerData.progress.experience / expNeeded * 100).toFixed(1);
 
@@ -923,16 +927,30 @@
                     this.playerData.progress.level++;
                     this.playerData.progress.experience -= expNeeded;
                     
-                    this.playerData.stats.health += 500;
-                    this.playerData.stats.physicalAttack += 50;
-                    this.playerData.stats.magicalAttack += 40;
-                    this.playerData.stats.physicalDefense += 30;
-                    this.playerData.stats.magicalDefense += 25;
+                    // تحديث الإحصائيات الأساسية
+                    if (!this.playerData.baseStats) {
+                        this.playerData.baseStats = {
+                            health: 1000,
+                            physicalAttack: 100,
+                            magicalAttack: 80,
+                            physicalDefense: 80,
+                            magicalDefense: 60,
+                            criticalChance: 5,
+                            tenacity: 5
+                        };
+                    }
+                    
+                    this.playerData.baseStats.health += 500;
+                    this.playerData.baseStats.physicalAttack += 50;
+                    this.playerData.baseStats.magicalAttack += 40;
+                    this.playerData.baseStats.physicalDefense += 30;
+                    this.playerData.baseStats.magicalDefense += 25;
 
                     if (this.playerData.progress.level % 20 === 0) {
                         this.playerData.resources.dailyCards += 10;
                     }
 
+                    this.applyAllBonuses();
                     utils.showMessage(`🎉 مبروك! وصلت للمستوى ${this.playerData.progress.level}!`, 'success');
                 }
             }
@@ -1503,6 +1521,48 @@
                         this.playerData.stats.criticalChance += bonus;
                     }
                 }
+            }
+
+            applyAllBonuses() {
+                // حفظ الإحصائيات الأساسية
+                if (!this.playerData.baseStats) {
+                    this.playerData.baseStats = {
+                        health: 1000,
+                        physicalAttack: 100,
+                        magicalAttack: 80,
+                        physicalDefense: 80,
+                        magicalDefense: 60,
+                        criticalChance: 5,
+                        tenacity: 5
+                    };
+                }
+
+                // إعادة تعيين الإحصائيات للقيم الأساسية
+                this.playerData.stats = JSON.parse(JSON.stringify(this.playerData.baseStats));
+
+                // إضافة مكافآت المستوى
+                const level = this.playerData.progress.level;
+                const levelBonuses = Math.floor((level - 1) / 10);
+                this.playerData.stats.health += levelBonuses * 500;
+                this.playerData.stats.physicalAttack += levelBonuses * 50;
+                this.playerData.stats.magicalAttack += levelBonuses * 40;
+                this.playerData.stats.physicalDefense += levelBonuses * 30;
+                this.playerData.stats.magicalDefense += levelBonuses * 25;
+
+                // إضافة إحصائيات العتاد المجهز
+                for (let slot in this.playerData.gear) {
+                    const item = this.playerData.gear[slot];
+                    if (item && item.stats) {
+                        this.playerData.stats.health += Math.floor(item.stats.health || 0);
+                        this.playerData.stats.physicalAttack += Math.floor(item.stats.physicalAttack || 0);
+                        this.playerData.stats.magicalAttack += Math.floor(item.stats.magicalAttack || 0);
+                        this.playerData.stats.physicalDefense += Math.floor(item.stats.physicalDefense || 0);
+                        this.playerData.stats.magicalDefense += Math.floor(item.stats.magicalDefense || 0);
+                    }
+                }
+
+                // إضافة بونصات البوابات
+                this.applyGateBonuses();
             }
 
             showGear() {
