@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -109,6 +110,18 @@
             background: #1976D2;
         }
 
+        .forgot-password {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .forgot-password:hover {
+            color: #ffd700;
+        }
+
         .success {
             color: #4CAF50;
             margin-top: 10px;
@@ -146,13 +159,38 @@
             cursor: pointer;
             color: white;
             font-size: 16px;
+            margin: 0 5px;
         }
 
         .logout-btn {
             background: #f44336;
         }
 
-        .player-stats {
+        .dev-mode-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .player-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .level-badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .player-stats, .resources {
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
@@ -171,6 +209,204 @@
             padding: 10px;
             border-radius: 5px;
             text-align: center;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .resource-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .resource-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .resource-card .amount {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .action-btn {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .mines-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .mine-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .mine-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .mine-card input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .mine-card button {
+            width: 100%;
+            padding: 15px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .mine-card button:hover {
+            background: #45a049;
+        }
+
+        .mine-reward {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .gates-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .gate-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .gate-card.lion {
+            border: 3px solid #ff6b6b;
+        }
+
+        .gate-card.dragon {
+            border: 3px solid #4ecdc4;
+        }
+
+        .gate-card.phoenix {
+            border: 3px solid #ff9f43;
+        }
+
+        .gate-card.wolf {
+            border: 3px solid #a29bfe;
+        }
+
+        .gate-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .gate-stats {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .gate-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .gate-stat button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .btn-change {
+            background: #2196F3;
+            color: white;
+        }
+
+        .btn-save {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .gate-bonus {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            padding: 10px 20px;
+            background: #666;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: #555;
+        }
+
+        .back-btn::before {
+            content: '→ ';
         }
 
         .message {
@@ -196,6 +432,111 @@
                 opacity: 1;
             }
         }
+
+        .daily-missions {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .mission-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mission-item.completed {
+            background: rgba(76, 175, 80, 0.3);
+        }
+
+        .mission-item button {
+            padding: 8px 15px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .mission-item button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .dev-panel {
+            background: rgba(0, 0, 0, 0.9);
+            border: 3px solid #ff6b6b;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .dev-panel h2 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .dev-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .dev-control {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .dev-control label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .dev-control input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .dev-control button {
+            width: 100%;
+            padding: 10px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .dev-control button:hover {
+            background: #ee5a6f;
+        }
+
+        @media (max-width: 768px) {
+            .login-form {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .login-form h1 {
+                font-size: 2em;
+            }
+
+            .gates-container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -207,7 +548,6 @@
     </div>
 
     <script>
-        // إعدادات Firebase الخاصة بك
         const firebaseConfig = {
             apiKey: "AIzaSyBQIcqbTtJY0xoaeL2FN1L-Zf5IGw59H3w",
             authDomain: "rpg-browser-game-ece4b.firebaseapp.com",
@@ -219,30 +559,10 @@
             measurementId: "G-EK6K14SXM7"
         };
 
-        // تهيئة Firebase
-        try {
-            firebase.initializeApp(firebaseConfig);
-            const auth = firebase.auth();
-            const db = firebase.firestore();
-            
-            // تفعيل التخزين المؤقت
-            db.enablePersistence()
-                .catch(function(err) {
-                    console.warn('Persistence error:', err);
-                });
-            
-            console.log('Firebase initialized successfully');
-        } catch (error) {
-            console.error('Firebase initialization error:', error);
-            document.getElementById('app').innerHTML = `
-                <div class="loading">
-                    <h2 style="color: #f44336;">❌ خطأ في تهيئة Firebase</h2>
-                    <p>${error.message}</p>
-                </div>
-            `;
-        }
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
 
-        // دوال مساعدة
         const utils = {
             formatNumber: function(num) {
                 return Math.floor(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -257,6 +577,15 @@
                 setTimeout(function() {
                     messageDiv.remove();
                 }, 3000);
+            },
+            random: function(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            },
+            calculateExpForLevel: function(level) {
+                return Math.floor(500 * Math.pow(1.5, level - 1));
+            },
+            calculateGoldForLevel: function(level) {
+                return Math.floor(1000 * Math.pow(1.5, level - 1));
             }
         };
 
@@ -264,43 +593,20 @@
             constructor() {
                 this.playerData = null;
                 this.userId = null;
+                this.devMode = false;
             }
 
             init(user) {
                 const self = this;
                 this.userId = user.uid;
                 window.gameApp = this;
-                
-                console.log('Loading player data for user:', user.uid);
-                
+                console.log('Loading player data...');
                 this.loadPlayerData(user).then(function() {
-                    console.log('Player data loaded successfully');
+                    self.checkDailyReset();
                     self.showMainPage();
                 }).catch(function(error) {
                     console.error('Error loading data:', error);
-                    
-                    // محاولة إنشاء بيانات جديدة إذا لم تكن موجودة
-                    if (error.message.includes('غير موجودة')) {
-                        console.log('Creating new player data...');
-                        return self.createPlayerData(user.uid, user.displayName || 'لاعب جديد')
-                            .then(function() {
-                                return self.loadPlayerData(user);
-                            })
-                            .then(function() {
-                                self.showMainPage();
-                            });
-                    } else {
-                        utils.showMessage('خطأ في تحميل البيانات: ' + error.message, 'error');
-                        document.getElementById('app').innerHTML = `
-                            <div class="loading">
-                                <h2 style="color: #f44336;">❌ خطأ في تحميل البيانات</h2>
-                                <p>${error.message}</p>
-                                <button onclick="auth.signOut()" style="margin-top: 20px; padding: 10px 20px; background: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                                    تسجيل الخروج
-                                </button>
-                            </div>
-                        `;
-                    }
+                    utils.showMessage('خطأ في تحميل البيانات', 'error');
                 });
             }
 
@@ -309,63 +615,85 @@
                 return db.collection('players').doc(user.uid).get().then(function(doc) {
                     if (doc.exists) {
                         self.playerData = doc.data();
-                        console.log('Player data:', self.playerData);
-                        return Promise.resolve();
+                        console.log('Player data loaded');
                     } else {
                         throw new Error('بيانات اللاعب غير موجودة');
                     }
                 });
             }
 
-            createPlayerData(userId, username) {
-                console.log('Creating player data for:', username);
-                const playerData = {
-                    username: username,
-                    stats: {
-                        health: 1000,
-                        physicalAttack: 100,
-                        magicalAttack: 80,
-                        physicalDefense: 80,
-                        magicalDefense: 60,
-                        criticalChance: 5
-                    },
-                    resources: {
-                        dailyCards: 100,
-                        gold: 50000,
-                        qualityStones: 10,
-                        levelStones: 15,
-                        energyPoints: 10
-                    },
-                    progress: {
-                        level: 1,
-                        experience: 0
-                    },
-                    gear: {
-                        helmet: null,
-                        chest: null,
-                        boots: null,
-                        amulet: null,
-                        ring: null,
-                        weapon: null
-                    },
-                    createdAt: new Date().toISOString()
-                };
+            checkDailyReset() {
+                const now = new Date();
+                const lastReset = this.playerData.progress.lastDailyReset ? 
+                    new Date(this.playerData.progress.lastDailyReset) : new Date(0);
+                
+                if (now.getDate() !== lastReset.getDate() || 
+                    now.getMonth() !== lastReset.getMonth() || 
+                    now.getFullYear() !== lastReset.getFullYear()) {
+                    this.playerData.resources.dailyCards = 100 + (Math.floor(this.playerData.progress.level / 20) * 10);
+                    this.playerData.dailyMissions = this.generateDailyMissions();
+                    this.playerData.progress.lastDailyReset = now.toISOString();
+                    this.savePlayerData();
+                    utils.showMessage('🎉 تم تجديد البطاقات اليومية!', 'success');
+                }
+            }
 
-                return db.collection('players').doc(userId).set(playerData);
+            generateDailyMissions() {
+                return [
+                    { id: 1, name: 'ادخل أي منجم 3 مرات', progress: 0, target: 3, completed: false, 
+                      rewards: { exp: 1000, gold: 5000, energy: 1 } },
+                    { id: 2, name: 'طور قطعة عتاد واحدة', progress: 0, target: 1, completed: false,
+                      rewards: { exp: 1000, gold: 5000, energy: 1 } },
+                    { id: 3, name: 'اجمع 20,000 ذهب', progress: 0, target: 20000, completed: false,
+                      rewards: { exp: 1000, gold: 5000, energy: 1 } },
+                    { id: 4, name: 'استخدم البوابات مرة واحدة', progress: 0, target: 1, completed: false,
+                      rewards: { exp: 1000, gold: 5000, energy: 1 } },
+                    { id: 5, name: 'سجل دخول يومي', progress: 1, target: 1, completed: false,
+                      rewards: { exp: 1000, gold: 5000, energy: 1 } }
+                ];
+            }
+
+            savePlayerData() {
+                const self = this;
+                return db.collection('players').doc(this.userId).update(this.playerData)
+                    .catch(function(error) {
+                        console.error('Error saving:', error);
+                    });
+            }
+
+            toggleDevMode() {
+                // فقط المستخدم "كلاس" يقدر يستخدم وضع المطور
+                if (this.playerData.username.toLowerCase() === 'كلاس') {
+                    this.devMode = !this.devMode;
+                    this.showMainPage();
+                } else {
+                    utils.showMessage('❌ هذه الميزة متاحة للمطورين فقط!', 'error');
+                }
             }
 
             showMainPage() {
                 const self = this;
                 
+                // تطبيق إحصائيات العتاد والبوابات
+                this.applyAllBonuses();
+                
+                const expNeeded = utils.calculateExpForLevel(this.playerData.progress.level);
+                const expProgress = (this.playerData.progress.experience / expNeeded * 100).toFixed(1);
+
                 document.getElementById('app').innerHTML = `
                     <div class="main-container">
                         <header class="game-header">
-                            <div>
+                            <div class="player-info">
                                 <h1>🎮 ${this.playerData.username}</h1>
-                                <div>المستوى ${this.playerData.progress.level}</div>
+                                <div class="level-badge">المستوى ${this.playerData.progress.level}</div>
                             </div>
-                            <button class="logout-btn" id="logoutBtn">تسجيل الخروج</button>
+                            <div>
+                                ${this.playerData.username.toLowerCase() === 'كلاس' ? '<button class="dev-mode-btn" id="devModeBtn">👨‍💻 وضع المطور</button>' : ''}
+                                <button class="logout-btn" id="logoutBtn">تسجيل الخروج</button>
+                            </div>
                         </header>
+
+                        ${this.devMode ? this.renderDevPanel() : ''}
 
                         <div class="player-stats">
                             <h2>📊 إحصائيات الشخصية</h2>
@@ -376,25 +704,1917 @@
                                 <div class="stat">🛡️ دفاع جسدي: ${utils.formatNumber(this.playerData.stats.physicalDefense)}</div>
                                 <div class="stat">🔮 دفاع سحري: ${utils.formatNumber(this.playerData.stats.magicalDefense)}</div>
                                 <div class="stat">💥 الحاسمة: ${this.playerData.stats.criticalChance}%</div>
+                                <div class="stat">🛡️ الحصانة: ${this.playerData.stats.tenacity || 5}%</div>
+                            </div>
+                            <div style="margin-top: 15px;">
+                                <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 5px;">
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span>الخبرة:</span>
+                                        <span>${utils.formatNumber(this.playerData.progress.experience)} / ${utils.formatNumber(expNeeded)}</span>
+                                    </div>
+                                    <div style="background: #333; height: 20px; border-radius: 10px; margin-top: 5px; overflow: hidden;">
+                                        <div style="background: linear-gradient(90deg, #4CAF50, #8BC34A); height: 100%; width: ${expProgress}%; transition: width 0.3s;"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="player-stats">
+                        <div class="resources">
                             <h2>💰 الموارد</h2>
-                            <div class="stats-grid">
-                                <div class="stat">🎴 البطاقات: ${this.playerData.resources.dailyCards}</div>
-                                <div class="stat">💰 الذهب: ${utils.formatNumber(this.playerData.resources.gold)}</div>
-                                <div class="stat">⚡ نقاط الطاقة: ${this.playerData.resources.energyPoints || 0}</div>
-                                <div class="stat">💎 أحجار الجودة: ${this.playerData.resources.qualityStones}</div>
-                                <div class="stat">🔷 أحجار المستوى: ${this.playerData.resources.levelStones || 0}</div>
+                            <div class="resources-grid">
+                                <div class="resource-card">
+                                    <h3>🎴 البطاقات</h3>
+                                    <div class="amount">${this.playerData.resources.dailyCards}</div>
+                                </div>
+                                <div class="resource-card">
+                                    <h3>💰 الذهب</h3>
+                                    <div class="amount">${utils.formatNumber(this.playerData.resources.gold)}</div>
+                                </div>
+                                <div class="resource-card">
+                                    <h3>⚡ نقاط الطاقة</h3>
+                                    <div class="amount">${this.playerData.resources.energyPoints || 0}</div>
+                                </div>
+                                <div class="resource-card">
+                                    <h3>💎 أحجار الجودة</h3>
+                                    <div class="amount">${this.playerData.resources.qualityStones}</div>
+                                </div>
+                                <div class="resource-card">
+                                    <h3>🔷 أحجار المستوى</h3>
+                                    <div class="amount">${this.playerData.resources.levelStones || 0}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        ${this.renderDailyMissions()}
+
+                        <div class="actions">
+                            <button class="action-btn" id="minesBtn">⛏️ المناجم</button>
+                            <button class="action-btn" id="gatesBtn">⚡ القوة الداخلية</button>
+                            <button class="action-btn" id="gearBtn">⚔️ العتاد</button>
+                            <button class="action-btn" id="profileBtn">👤 الملف الشخصي</button>
+                            <button class="action-btn" id="playersBtn">👥 اللاعبين</button>
+                            <button class="action-btn" id="shopBtn">🏪 المتجر</button>
+                        </div>
+                    </div>
+                `;
+
+                this.setupMainEvents();
+            }
+
+            renderDevPanel() {
+                return `
+                    <div class="dev-panel">
+                        <h2>👨‍💻 لوحة تحكم المطور</h2>
+                        <div class="dev-controls">
+                            <div class="dev-control">
+                                <label>المستوى:</label>
+                                <input type="number" id="devLevel" value="${this.playerData.progress.level}" min="1" max="100">
+                                <button onclick="gameApp.devSetLevel()">تطبيق</button>
+                            </div>
+                            <div class="dev-control">
+                                <label>الخبرة:</label>
+                                <input type="number" id="devExp" value="${this.playerData.progress.experience}">
+                                <button onclick="gameApp.devSetExp()">تطبيق</button>
+                            </div>
+                            <div class="dev-control">
+                                <label>الذهب:</label>
+                                <input type="number" id="devGold" value="${this.playerData.resources.gold}">
+                                <button onclick="gameApp.devSetGold()">تطبيق</button>
+                            </div>
+                            <div class="dev-control">
+                                <label>البطاقات:</label>
+                                <input type="number" id="devCards" value="${this.playerData.resources.dailyCards}">
+                                <button onclick="gameApp.devSetCards()">تطبيق</button>
+                            </div>
+                            <div class="dev-control">
+                                <label>نقاط الطاقة:</label>
+                                <input type="number" id="devEnergy" value="${this.playerData.resources.energyPoints || 0}">
+                                <button onclick="gameApp.devSetEnergy()">تطبيق</button>
+                            </div>
+                            <div class="dev-control">
+                                <label>أحجار الجودة:</label>
+                                <input type="number" id="devQuality" value="${this.playerData.resources.qualityStones}">
+                                <button onclick="gameApp.devSetQuality()">تطبيق</button>
+                            </div>
+                            <div class="dev-control">
+                                <label>أحجار المستوى:</label>
+                                <input type="number" id="devLevelStones" value="${this.playerData.resources.levelStones || 0}">
+                                <button onclick="gameApp.devSetLevelStones()">تطبيق</button>
+                            </div>
+                            <div class="dev-control">
+                                <label>الصحة:</label>
+                                <input type="number" id="devHealth" value="${this.playerData.stats.health}">
+                                <button onclick="gameApp.devSetHealth()">تطبيق</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            devSetLevel() {
+                const newLevel = parseInt(document.getElementById('devLevel').value);
+                if (newLevel < 1 || newLevel > 100) {
+                    utils.showMessage('❌ المستوى يجب أن يكون بين 1 و 100!', 'error');
+                    return;
+                }
+                this.playerData.progress.level = newLevel;
+                this.savePlayerData();
+                this.showMainPage();
+                utils.showMessage('✅ تم تحديث المستوى!', 'success');
+            }
+
+            devSetExp() {
+                this.playerData.progress.experience = parseInt(document.getElementById('devExp').value);
+                this.savePlayerData();
+                this.showMainPage();
+                utils.showMessage('✅ تم تحديث الخبرة!', 'success');
+            }
+
+            devSetGold() {
+                this.playerData.resources.gold = parseInt(document.getElementById('devGold').value);
+                this.savePlayerData();
+                this.showMainPage();
+                utils.showMessage('✅ تم تحديث الذهب!', 'success');
+            }
+
+            devSetCards() {
+                this.playerData.resources.dailyCards = parseInt(document.getElementById('devCards').value);
+                this.savePlayerData();
+                this.showMainPage();
+                utils.showMessage('✅ تم تحديث البطاقات!', 'success');
+            }
+
+            devSetEnergy() {
+                this.playerData.resources.energyPoints = parseInt(document.getElementById('devEnergy').value);
+                this.savePlayerData();
+                this.showMainPage();
+                utils.showMessage('✅ تم تحديث نقاط الطاقة!', 'success');
+            }
+
+            devSetQuality() {
+                this.playerData.resources.qualityStones = parseInt(document.getElementById('devQuality').value);
+                this.savePlayerData();
+                this.showMainPage();
+                utils.showMessage('✅ تم تحديث أحجار الجودة!', 'success');
+            }
+
+            devSetLevelStones() {
+                this.playerData.resources.levelStones = parseInt(document.getElementById('devLevelStones').value);
+                this.savePlayerData();
+                this.showMainPage();
+                utils.showMessage('✅ تم تحديث أحجار المستوى!', 'success');
+            }
+
+            devSetHealth() {
+                this.playerData.stats.health = parseInt(document.getElementById('devHealth').value);
+                this.savePlayerData();
+                this.showMainPage();
+                utils.showMessage('✅ تم تحديث الصحة!', 'success');
+            }
+
+            renderDailyMissions() {
+                if (!this.playerData.dailyMissions) {
+                    this.playerData.dailyMissions = this.generateDailyMissions();
+                }
+
+                const missions = this.playerData.dailyMissions.map(function(mission, index) {
+                    const completed = mission.completed;
+                    return `
+                        <div class="mission-item ${completed ? 'completed' : ''}">
+                            <div>
+                                <strong>${mission.name}</strong>
+                                <div style="font-size: 0.9em; opacity: 0.8;">
+                                    ${mission.progress} / ${mission.target}
+                                </div>
+                            </div>
+                            <div>
+                                ${completed ? 
+                                    '<span style="color: #4CAF50;">✅ مكتملة</span>' :
+                                    `<button class="claim-mission-btn" data-index="${index}" ${mission.progress >= mission.target ? '' : 'disabled'}>
+                                        استلام (${mission.rewards.exp} خبرة + ${mission.rewards.gold} ذهب + ${mission.rewards.energy} طاقة)
+                                    </button>`
+                                }
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="daily-missions">
+                        <h2>📋 المهام اليومية</h2>
+                        ${missions}
+                    </div>
+                `;
+            }
+
+            claimMission(index) {
+                const mission = this.playerData.dailyMissions[index];
+                if (mission.completed || mission.progress < mission.target) return;
+
+                mission.completed = true;
+                this.playerData.progress.experience += mission.rewards.exp;
+                this.playerData.resources.gold += mission.rewards.gold;
+                this.playerData.resources.energyPoints = (this.playerData.resources.energyPoints || 0) + mission.rewards.energy;
+
+                this.checkLevelUp();
+                this.savePlayerData();
+                this.showMainPage();
+                utils.showMessage('🎉 تم استلام مكافأة المهمة!', 'success');
+            }
+
+            checkLevelUp() {
+                const expNeeded = utils.calculateExpForLevel(this.playerData.progress.level);
+                if (this.playerData.progress.experience >= expNeeded) {
+                    this.playerData.progress.level++;
+                    this.playerData.progress.experience -= expNeeded;
+                    
+                    // تحديث الإحصائيات الأساسية
+                    if (!this.playerData.baseStats) {
+                        this.playerData.baseStats = {
+                            health: 1000,
+                            physicalAttack: 100,
+                            magicalAttack: 80,
+                            physicalDefense: 80,
+                            magicalDefense: 60,
+                            criticalChance: 5,
+                            tenacity: 5
+                        };
+                    }
+                    
+                    this.playerData.baseStats.health += 500;
+                    this.playerData.baseStats.physicalAttack += 50;
+                    this.playerData.baseStats.magicalAttack += 40;
+                    this.playerData.baseStats.physicalDefense += 30;
+                    this.playerData.baseStats.magicalDefense += 25;
+
+                    if (this.playerData.progress.level % 20 === 0) {
+                        this.playerData.resources.dailyCards += 10;
+                    }
+
+                    this.applyAllBonuses();
+                    utils.showMessage(`🎉 مبروك! وصلت للمستوى ${this.playerData.progress.level}!`, 'success');
+                }
+            }
+
+            setupMainEvents() {
+                const self = this;
+                
+                document.getElementById('logoutBtn').addEventListener('click', function() {
+                    auth.signOut();
+                });
+
+                const devBtn = document.getElementById('devModeBtn');
+                if (devBtn) {
+                    devBtn.addEventListener('click', function() {
+                        self.toggleDevMode();
+                    });
+                }
+
+                document.getElementById('minesBtn').addEventListener('click', function() {
+                    self.showMines();
+                });
+
+                document.getElementById('gatesBtn').addEventListener('click', function() {
+                    self.showGates();
+                });
+
+                document.getElementById('gearBtn').addEventListener('click', function() {
+                    self.showGear();
+                });
+
+                document.getElementById('profileBtn').addEventListener('click', function() {
+                    self.showProfile();
+                });
+
+                document.getElementById('playersBtn').addEventListener('click', function() {
+                    self.showPlayers();
+                });
+
+                document.getElementById('shopBtn').addEventListener('click', function() {
+                    utils.showMessage('🏪 المتجر قريباً!', 'info');
+                });
+
+                const missionButtons = document.querySelectorAll('.claim-mission-btn');
+                missionButtons.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        self.claimMission(index);
+                    });
+                });
+            }
+
+            showMines() {
+                const self = this;
+                document.getElementById('app').innerHTML = `
+                    <div class="main-container">
+                        <button class="back-btn" id="backBtn">← رجوع</button>
+                        <h1 style="text-align: center; margin-bottom: 30px;">⛏️ المناجم</h1>
+                        
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; display: inline-block;">
+                                <h3 id="cardsDisplay">🎴 البطاقات المتبقية: ${this.playerData.resources.dailyCards}</h3>
+                            </div>
+                        </div>
+
+                        <div class="mines-container">
+                            <div class="mine-card">
+                                <h3>⚔️ منجم العتاد</h3>
+                                <p>يعطي قطع عتاد عشوائية</p>
+                                <p style="font-size: 0.9em; opacity: 0.8;">10 بطاقات = قطعة عتاد</p>
+                                <input type="number" id="gearCards" min="10" max="${this.playerData.resources.dailyCards}" step="10" value="10" />
+                                <button id="gearMineBtn">دخول المنجم</button>
+                                <div id="gearReward"></div>
+                            </div>
+
+                            <div class="mine-card">
+                                <h3>💰 منجم الذهب</h3>
+                                <p>يعطي ذهب وفرصة نقاط طاقة</p>
+                                <p style="font-size: 0.9em; opacity: 0.8;">5 بطاقات = 5,000-10,000 ذهب</p>
+                                <input type="number" id="goldCards" min="5" max="${this.playerData.resources.dailyCards}" step="5" value="5" />
+                                <button id="goldMineBtn">دخول المنجم</button>
+                                <div id="goldReward"></div>
+                            </div>
+
+                            <div class="mine-card">
+                                <h3>💎 منجم الأحجار</h3>
+                                <p>يعطي أحجار لتطوير العتاد</p>
+                                <p style="font-size: 0.9em; opacity: 0.8;">10 بطاقات = 3-7 أحجار</p>
+                                <input type="number" id="stoneCards" min="10" max="${this.playerData.resources.dailyCards}" step="10" value="10" />
+                                <button id="stoneMineBtn">دخول المنجم</button>
+                                <div id="stoneReward"></div>
                             </div>
                         </div>
                     </div>
                 `;
 
-                document.getElementById('logoutBtn').addEventListener('click', function() {
-                    auth.signOut();
+                document.getElementById('backBtn').addEventListener('click', function() {
+                    self.showMainPage();
                 });
+
+                document.getElementById('gearMineBtn').addEventListener('click', function() {
+                    self.enterMine('gear');
+                });
+
+                document.getElementById('goldMineBtn').addEventListener('click', function() {
+                    self.enterMine('gold');
+                });
+
+                document.getElementById('stoneMineBtn').addEventListener('click', function() {
+                    self.enterMine('stone');
+                });
+            }
+
+            enterMine(type) {
+                const cardInputs = {
+                    gear: 'gearCards',
+                    gold: 'goldCards',
+                    stone: 'stoneCards'
+                };
+
+                const cards = parseInt(document.getElementById(cardInputs[type]).value);
+                
+                if (cards > this.playerData.resources.dailyCards) {
+                    utils.showMessage('❌ ليس لديك بطاقات كافية!', 'error');
+                    return;
+                }
+
+                const minCards = type === 'gold' ? 5 : 10;
+                if (cards < minCards || cards % minCards !== 0) {
+                    utils.showMessage(`❌ يجب إدخال مضاعفات ${minCards}!`, 'error');
+                    return;
+                }
+
+                this.playerData.resources.dailyCards -= cards;
+                
+                let reward = '';
+                const entries = cards / minCards;
+
+                if (type === 'gear') {
+                    const gearTypes = ['خوذة', 'درع', 'حذاء', 'قلادة', 'خاتم', 'سلاح'];
+                    const items = [];
+                    
+                    for (let i = 0; i < entries; i++) {
+                        const rand = Math.random() * 100;
+                        let quality;
+                        if (rand < 70) quality = 'عادي';
+                        else if (rand < 95) quality = 'نقي';
+                        else quality = 'فريد';
+                        
+                        const gearType = gearTypes[utils.random(0, gearTypes.length - 1)];
+                        items.push(`${quality} ${gearType}`);
+                        
+                        if (!this.playerData.inventory) this.playerData.inventory = [];
+                        this.playerData.inventory.push({
+                            type: gearType,
+                            quality: quality,
+                            level: 1,
+                            stats: this.generateGearStats(quality)
+                        });
+                    }
+                    
+                    reward = `<div class="mine-reward"><strong>🎉 حصلت على:</strong><br/>${items.join('<br/>')}</div>`;
+                    this.playerData.progress.experience += entries * 200;
+                    
+                } else if (type === 'gold') {
+                    let totalGold = 0;
+                    let energyPoints = 0;
+                    
+                    for (let i = 0; i < entries; i++) {
+                        const gold = utils.random(5000, 10000);
+                        totalGold += gold;
+                        
+                        if (Math.random() < 0.05) {
+                            energyPoints++;
+                        }
+                    }
+                    
+                    this.playerData.resources.gold += totalGold;
+                    if (energyPoints > 0) {
+                        this.playerData.resources.energyPoints = (this.playerData.resources.energyPoints || 0) + energyPoints;
+                    }
+                    
+                    reward = `<div class="mine-reward"><strong>🎉 حصلت على:</strong><br/>💰 ${utils.formatNumber(totalGold)} ذهب`;
+                    if (energyPoints > 0) {
+                        reward += `<br/>⚡ ${energyPoints} نقطة طاقة!`;
+                    }
+                    reward += '</div>';
+                    
+                    this.playerData.progress.experience += entries * 300;
+                    
+                    if (this.playerData.dailyMissions && this.playerData.dailyMissions[2]) {
+                        this.playerData.dailyMissions[2].progress += totalGold;
+                    }
+                    
+                } else if (type === 'stone') {
+                    let qualityStones = 0;
+                    let levelStones = 0;
+                    
+                    for (let i = 0; i < entries; i++) {
+                        const amount = utils.random(3, 7);
+                        for (let j = 0; j < amount; j++) {
+                            if (Math.random() < 0.7) {
+                                levelStones++;
+                            } else {
+                                qualityStones++;
+                            }
+                        }
+                    }
+                    
+                    this.playerData.resources.qualityStones += qualityStones;
+                    this.playerData.resources.levelStones = (this.playerData.resources.levelStones || 0) + levelStones;
+                    
+                    reward = `<div class="mine-reward"><strong>🎉 حصلت على:</strong><br/>💎 ${qualityStones} حجر جودة<br/>🔷 ${levelStones} حجر مستوى</div>`;
+                    this.playerData.progress.experience += entries * 250;
+                }
+
+                if (this.playerData.dailyMissions && this.playerData.dailyMissions[0]) {
+                    this.playerData.dailyMissions[0].progress += entries;
+                }
+
+                this.checkLevelUp();
+                this.savePlayerData();
+                
+                document.getElementById(type + 'Reward').innerHTML = reward;
+                document.getElementById('cardsDisplay').innerHTML = `🎴 البطاقات المتبقية: ${this.playerData.resources.dailyCards}`;
+                
+                utils.showMessage('✅ تم الدخول للمنجم بنجاح!', 'success');
+            }
+
+            generateGearStats(quality) {
+                const multipliers = {
+                    'عادي': 1,
+                    'نقي': 1.5,
+                    'فريد': 2,
+                    'راقي': 3,
+                    'فاخر': 5
+                };
+                
+                const mult = multipliers[quality];
+                return {
+                    health: utils.random(50, 100) * mult,
+                    physicalAttack: utils.random(10, 30) * mult,
+                    magicalAttack: utils.random(8, 25) * mult,
+                    physicalDefense: utils.random(10, 25) * mult,
+                    magicalDefense: utils.random(8, 20) * mult
+                };
+            }
+
+            showGates() {
+                const self = this;
+                
+                if (!this.playerData.gates) {
+                    this.playerData.gates = {
+                        lion: { 
+                            health: { value: 0, level: 1 },
+                            physicalAttack: { value: 0, level: 1 },
+                            magicalAttack: { value: 0, level: 1 },
+                            physicalDefense: { value: 0, level: 1 },
+                            magicalDefense: { value: 0, level: 1 },
+                            critical: { value: 0, level: 1 },
+                            tenacity: { value: 0, level: 1 }
+                        },
+                        dragon: { 
+                            health: { value: 0, level: 1 },
+                            physicalAttack: { value: 0, level: 1 },
+                            magicalAttack: { value: 0, level: 1 },
+                            physicalDefense: { value: 0, level: 1 },
+                            magicalDefense: { value: 0, level: 1 },
+                            critical: { value: 0, level: 1 },
+                            tenacity: { value: 0, level: 1 }
+                        },
+                        phoenix: { 
+                            health: { value: 0, level: 1 },
+                            physicalAttack: { value: 0, level: 1 },
+                            magicalAttack: { value: 0, level: 1 },
+                            physicalDefense: { value: 0, level: 1 },
+                            magicalDefense: { value: 0, level: 1 },
+                            critical: { value: 0, level: 1 },
+                            tenacity: { value: 0, level: 1 }
+                        },
+                        wolf: { 
+                            health: { value: 0, level: 1 },
+                            physicalAttack: { value: 0, level: 1 },
+                            magicalAttack: { value: 0, level: 1 },
+                            physicalDefense: { value: 0, level: 1 },
+                            magicalDefense: { value: 0, level: 1 },
+                            critical: { value: 0, level: 1 },
+                            tenacity: { value: 0, level: 1 }
+                        }
+                    };
+                }
+
+                document.getElementById('app').innerHTML = `
+                    <div class="main-container">
+                        <button class="back-btn" id="backBtn">رجوع</button>
+                        <h1 style="text-align: center; margin-bottom: 30px;">⚡ القوة الداخلية</h1>
+                        
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; display: inline-block;">
+                                <h3 id="energyDisplay">⚡ نقاط الطاقة المتبقية: ${this.playerData.resources.energyPoints || 0}</h3>
+                                <p style="font-size: 0.9em; opacity: 0.8;">كل تغيير = 1 نقطة طاقة</p>
+                            </div>
+                        </div>
+
+                        <div class="gates-container">
+                            ${this.renderGate('lion', '🦁 بوابة الأسد', 'بونص: +3000 نقاط حياة (أول 3)')}
+                            ${this.renderGate('dragon', '🐉 بوابة التنين', 'بونص: +200 هجوم جسدي (أول 3)')}
+                            ${this.renderGate('phoenix', '🦅 بوابة العنقاء', 'بونص: +150 دفاع جسدي/سحري (أول 3)')}
+                            ${this.renderGate('wolf', '🐺 بوابة الذئب', 'بونص: +10% حاسمة (أول 3)')}
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('backBtn').addEventListener('click', function() {
+                    self.showMainPage();
+                });
+
+                const changeButtons = document.querySelectorAll('.btn-change');
+                changeButtons.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const gateId = this.getAttribute('data-gate');
+                        const stat = this.getAttribute('data-stat');
+                        const action = this.getAttribute('data-action');
+                        
+                        if (action === 'upgrade') {
+                            self.upgradeGateStat(gateId, stat);
+                        } else {
+                            self.changeGateStat(gateId, stat);
+                        }
+                    });
+                });
+
+                const saveButtons = document.querySelectorAll('.btn-save');
+                saveButtons.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const gateId = this.getAttribute('data-gate');
+                        const stat = this.getAttribute('data-stat');
+                        self.saveGateStat(gateId, stat);
+                    });
+                });
+            }
+
+            renderGate(gateId, title, bonus) {
+                const gate = this.playerData.gates[gateId];
+                
+                // تحويل البيانات القديمة للنظام الجديد
+                if (typeof gate.health === 'number') {
+                    for (let stat in gate) {
+                        gate[stat] = { value: gate[stat], level: 1 };
+                    }
+                }
+                
+                const total = (gate.health.value * gate.health.level) + 
+                             (gate.physicalAttack.value * gate.physicalAttack.level) +
+                             (gate.magicalAttack.value * gate.magicalAttack.level) + 
+                             (gate.physicalDefense.value * gate.physicalDefense.level) +
+                             (gate.magicalDefense.value * gate.magicalDefense.level) +
+                             (gate.critical.value * gate.critical.level) +
+                             (gate.tenacity.value * gate.tenacity.level);
+                
+                const rank = this.getGateRank(gateId);
+                const bonusMultiplier = this.getBonusMultiplier(rank);
+                const bonusText = bonusMultiplier > 0 ? `${(bonusMultiplier * 100).toFixed(0)}% من البونص` : 'لا يوجد بونص';
+
+                return `
+                    <div class="gate-card ${gateId}">
+                        <h3>${title}</h3>
+                        <p style="text-align: center; font-size: 0.9em; opacity: 0.8;">${bonus}</p>
+                        <div style="text-align: center; margin: 10px 0;">
+                            <strong>المجموع: ${Math.floor(total)} / 70000</strong><br/>
+                            <span style="color: ${bonusMultiplier > 0 ? '#4CAF50' : '#ff9800'}; font-weight: bold;">
+                                الترتيب: #${rank} - ${bonusText}
+                            </span>
+                        </div>
+                        
+                        <div class="gate-stats">
+                            ${this.renderGateStat(gateId, 'health', '❤️ نقاط الحياة', gate.health)}
+                            ${this.renderGateStat(gateId, 'physicalAttack', '⚔️ هجوم جسدي', gate.physicalAttack)}
+                            ${this.renderGateStat(gateId, 'magicalAttack', '✨ هجوم سحري', gate.magicalAttack)}
+                            ${this.renderGateStat(gateId, 'physicalDefense', '🛡️ دفاع جسدي', gate.physicalDefense)}
+                            ${this.renderGateStat(gateId, 'magicalDefense', '🔮 دفاع سحري', gate.magicalDefense)}
+                            ${this.renderGateStat(gateId, 'critical', '💥 الحاسمة', gate.critical)}
+                            ${this.renderGateStat(gateId, 'tenacity', '🛡️ الحصانة', gate.tenacity)}
+                        </div>
+                    </div>
+                `;
+            }
+
+            getGateRank(gateId) {
+                const gates = this.playerData.gates;
+                const totals = [];
+                
+                for (let id in gates) {
+                    const gate = gates[id];
+                    const total = (gate.health.value * gate.health.level) + 
+                                 (gate.physicalAttack.value * gate.physicalAttack.level) +
+                                 (gate.magicalAttack.value * gate.magicalAttack.level) + 
+                                 (gate.physicalDefense.value * gate.physicalDefense.level) +
+                                 (gate.magicalDefense.value * gate.magicalDefense.level) +
+                                 (gate.critical.value * gate.critical.level) +
+                                 (gate.tenacity.value * gate.tenacity.level);
+                    totals.push({ id: id, total: total });
+                }
+                
+                totals.sort((a, b) => b.total - a.total);
+                return totals.findIndex(g => g.id === gateId) + 1;
+            }
+
+            getBonusMultiplier(rank) {
+                if (rank <= 3) return 1.0;     // 100%
+                if (rank === 4) return 0.93;   // 93%
+                return 0;                       // لا يوجد بونص
+            }
+
+            renderGateStat(gateId, stat, label, statObj) {
+                const currentValue = statObj.value * statObj.level;
+                return `
+                    <div class="gate-stat">
+                        <span>${label}: <strong id="${gateId}-${stat}-value">${statObj.value}</strong> (م${statObj.level}) = ${currentValue}</span>
+                        <div>
+                            <button class="btn-change" data-gate="${gateId}" data-stat="${stat}">تغيير (1 طاقة)</button>
+                            <button class="btn-save" data-gate="${gateId}" data-stat="${stat}">حفظ</button>
+                            <button class="btn-change" data-gate="${gateId}" data-stat="${stat}" data-action="upgrade" 
+                                    style="background: #9C27B0; ${statObj.level >= 100 ? 'opacity: 0.5; cursor: not-allowed;' : ''}">
+                                ترقية م${statObj.level} → م${statObj.level + 1} (${this.getUpgradeCost(statObj.level)} ذهب)
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            getUpgradeCost(currentLevel) {
+                return utils.formatNumber(currentLevel * 1000);
+            }
+
+            changeGateStat(gateId, stat) {
+                if ((this.playerData.resources.energyPoints || 0) < 1) {
+                    utils.showMessage('❌ ليس لديك نقاط طاقة كافية!', 'error');
+                    return;
+                }
+
+                this.playerData.resources.energyPoints--;
+                const newValue = utils.random(1, 100);
+                
+                const tempEl = document.getElementById(`${gateId}-${stat}-value`);
+                if (tempEl) {
+                    tempEl.innerHTML = `${newValue} (جديد)`;
+                    tempEl.dataset.tempValue = newValue;
+                }
+
+                const energyDisplay = document.getElementById('energyDisplay');
+                if (energyDisplay) {
+                    energyDisplay.innerHTML = `⚡ نقاط الطاقة المتبقية: ${this.playerData.resources.energyPoints}`;
+                }
+
+                if (this.playerData.dailyMissions && this.playerData.dailyMissions[3]) {
+                    this.playerData.dailyMissions[3].progress = 1;
+                }
+
+                this.playerData.progress.experience += 300;
+                this.checkLevelUp();
+                this.savePlayerData();
+            }
+
+            upgradeGateStat(gateId, stat) {
+                const statObj = this.playerData.gates[gateId][stat];
+                
+                if (statObj.level >= 100) {
+                    utils.showMessage('❌ وصلت للمستوى الأقصى!', 'error');
+                    return;
+                }
+
+                const cost = statObj.level * 1000;
+                if (this.playerData.resources.gold < cost) {
+                    utils.showMessage('❌ ليس لديك ذهب كافٍ!', 'error');
+                    return;
+                }
+
+                this.playerData.resources.gold -= cost;
+                statObj.level++;
+
+                this.applyGateBonuses();
+                this.savePlayerData();
+                this.showGates();
+                utils.showMessage(`✅ تمت الترقية إلى المستوى ${statObj.level}!`, 'success');
+            }
+
+            saveGateStat(gateId, stat) {
+                const tempEl = document.getElementById(`${gateId}-${stat}-value`);
+                if (!tempEl || !tempEl.dataset.tempValue) {
+                    utils.showMessage('⚠️ يجب التغيير أولاً!', 'error');
+                    return;
+                }
+
+                const newValue = parseInt(tempEl.dataset.tempValue);
+                this.playerData.gates[gateId][stat].value = newValue;
+                
+                this.applyGateBonuses();
+                
+                delete tempEl.dataset.tempValue;
+                this.savePlayerData();
+                this.showGates();
+                utils.showMessage('✅ تم حفظ القيمة بنجاح!', 'success');
+            }
+
+            applyGateBonuses() {
+                // حساب المجاميع والترتيب
+                const gates = this.playerData.gates;
+                const totals = [];
+                
+                for (let gateId in gates) {
+                    const gate = gates[gateId];
+                    const total = (gate.health.value * gate.health.level) + 
+                                 (gate.physicalAttack.value * gate.physicalAttack.level) +
+                                 (gate.magicalAttack.value * gate.magicalAttack.level) + 
+                                 (gate.physicalDefense.value * gate.physicalDefense.level) +
+                                 (gate.magicalDefense.value * gate.magicalDefense.level) +
+                                 (gate.critical.value * gate.critical.level) +
+                                 (gate.tenacity.value * gate.tenacity.level);
+                    totals.push({ id: gateId, total: total });
+                }
+                
+                totals.sort((a, b) => b.total - a.total);
+
+                // إزالة البونصات القديمة
+                if (this.playerData.gateBonuses) {
+                    this.playerData.stats.health -= this.playerData.gateBonuses.health || 0;
+                    this.playerData.stats.physicalAttack -= this.playerData.gateBonuses.physicalAttack || 0;
+                    this.playerData.stats.physicalDefense -= this.playerData.gateBonuses.physicalDefense || 0;
+                    this.playerData.stats.magicalDefense -= this.playerData.gateBonuses.magicalDefense || 0;
+                    this.playerData.stats.criticalChance -= this.playerData.gateBonuses.critical || 0;
+                }
+
+                // إضافة البونصات الجديدة
+                this.playerData.gateBonuses = {
+                    health: 0,
+                    physicalAttack: 0,
+                    physicalDefense: 0,
+                    magicalDefense: 0,
+                    critical: 0
+                };
+
+                // تطبيق البونص حسب الترتيب
+                for (let i = 0; i < totals.length; i++) {
+                    const gateId = totals[i].id;
+                    const rank = i + 1;
+                    const multiplier = this.getBonusMultiplier(rank);
+                    
+                    if (multiplier === 0) continue;
+
+                    if (gateId === 'lion') {
+                        const bonus = Math.floor(3000 * multiplier);
+                        this.playerData.gateBonuses.health += bonus;
+                        this.playerData.stats.health += bonus;
+                    } else if (gateId === 'dragon') {
+                        const bonus = Math.floor(200 * multiplier);
+                        this.playerData.gateBonuses.physicalAttack += bonus;
+                        this.playerData.stats.physicalAttack += bonus;
+                    } else if (gateId === 'phoenix') {
+                        const bonusPhys = Math.floor(150 * multiplier);
+                        const bonusMag = Math.floor(150 * multiplier);
+                        this.playerData.gateBonuses.physicalDefense += bonusPhys;
+                        this.playerData.gateBonuses.magicalDefense += bonusMag;
+                        this.playerData.stats.physicalDefense += bonusPhys;
+                        this.playerData.stats.magicalDefense += bonusMag;
+                    } else if (gateId === 'wolf') {
+                        const bonus = Math.floor(10 * multiplier);
+                        this.playerData.gateBonuses.critical += bonus;
+                        this.playerData.stats.criticalChance += bonus;
+                    }
+                }
+            }
+
+            applyAllBonuses() {
+                // حفظ الإحصائيات الأساسية
+                if (!this.playerData.baseStats) {
+                    this.playerData.baseStats = {
+                        health: 1000,
+                        physicalAttack: 100,
+                        magicalAttack: 80,
+                        physicalDefense: 80,
+                        magicalDefense: 60,
+                        criticalChance: 5,
+                        tenacity: 5
+                    };
+                }
+
+                // إعادة تعيين الإحصائيات للقيم الأساسية
+                this.playerData.stats = JSON.parse(JSON.stringify(this.playerData.baseStats));
+
+                // إضافة مكافآت المستوى
+                const level = this.playerData.progress.level;
+                const levelBonuses = Math.floor((level - 1) / 10);
+                this.playerData.stats.health += levelBonuses * 500;
+                this.playerData.stats.physicalAttack += levelBonuses * 50;
+                this.playerData.stats.magicalAttack += levelBonuses * 40;
+                this.playerData.stats.physicalDefense += levelBonuses * 30;
+                this.playerData.stats.magicalDefense += levelBonuses * 25;
+
+                // إضافة إحصائيات العتاد المجهز
+                for (let slot in this.playerData.gear) {
+                    const item = this.playerData.gear[slot];
+                    if (item && item.stats) {
+                        this.playerData.stats.health += Math.floor(item.stats.health || 0);
+                        this.playerData.stats.physicalAttack += Math.floor(item.stats.physicalAttack || 0);
+                        this.playerData.stats.magicalAttack += Math.floor(item.stats.magicalAttack || 0);
+                        this.playerData.stats.physicalDefense += Math.floor(item.stats.physicalDefense || 0);
+                        this.playerData.stats.magicalDefense += Math.floor(item.stats.magicalDefense || 0);
+                    }
+                }
+
+                // إضافة بونصات البوابات
+                this.applyGateBonuses();
+            }
+
+            showGear() {
+                const self = this;
+                
+                if (!this.playerData.inventory) {
+                    this.playerData.inventory = [];
+                }
+
+                const equippedGear = this.playerData.gear;
+                
+                document.getElementById('app').innerHTML = `
+                    <div class="main-container">
+                        <button class="back-btn" id="backBtn">← رجوع</button>
+                        <h1 style="text-align: center; margin-bottom: 30px;">⚔️ العتاد</h1>
+                        
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                            <h2>🎒 العتاد المُجهز</h2>
+                            <div class="stats-grid">
+                                ${this.renderEquippedSlot('helmet', '⛑️ الخوذة', equippedGear.helmet)}
+                                ${this.renderEquippedSlot('chest', '🛡️ الدرع', equippedGear.chest)}
+                                ${this.renderEquippedSlot('boots', '👢 الحذاء', equippedGear.boots)}
+                                ${this.renderEquippedSlot('amulet', '📿 القلادة', equippedGear.amulet)}
+                                ${this.renderEquippedSlot('ring', '💍 الخاتم', equippedGear.ring)}
+                                ${this.renderEquippedSlot('weapon', '⚔️ السلاح', equippedGear.weapon)}
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                            <h2>📦 المخزن (${this.playerData.inventory.length} قطعة)</h2>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+                                ${this.renderInventory()}
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('backBtn').addEventListener('click', function() {
+                    self.showMainPage();
+                });
+
+                this.setupGearEvents();
+            }
+
+            renderEquippedSlot(slot, label, item) {
+                const self = this;
+                if (!item) {
+                    return `
+                        <div class="stat" style="background: rgba(255,255,255,0.1);">
+                            <strong>${label}</strong><br/>
+                            <span style="opacity: 0.6;">فارغ</span>
+                        </div>
+                    `;
+                }
+
+                const qualityColors = {
+                    'عادي': '#9e9e9e',
+                    'نقي': '#4CAF50',
+                    'فريد': '#2196F3',
+                    'راقي': '#9C27B0',
+                    'فاخر': '#FF9800'
+                };
+
+                const stats = [];
+                if (item.stats.health) stats.push(`❤️ ${Math.floor(item.stats.health)}`);
+                if (item.stats.physicalAttack) stats.push(`⚔️ ${Math.floor(item.stats.physicalAttack)}`);
+                if (item.stats.magicalAttack) stats.push(`✨ ${Math.floor(item.stats.magicalAttack)}`);
+                if (item.stats.physicalDefense) stats.push(`🛡️ ${Math.floor(item.stats.physicalDefense)}`);
+                if (item.stats.magicalDefense) stats.push(`🔮 ${Math.floor(item.stats.magicalDefense)}`);
+
+                return `
+                    <div class="stat" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3)); border: 2px solid ${qualityColors[item.quality]}; padding: 15px;">
+                        <strong>${label}</strong><br/>
+                        <span style="color: ${qualityColors[item.quality]}; font-weight: bold; font-size: 1.1em;">${item.quality} +${item.level}</span><br/>
+                        <div style="font-size: 0.85em; margin: 8px 0; opacity: 0.9;">
+                            ${stats.join(' | ')}
+                        </div>
+                        <div style="display: grid; gap: 5px; margin-top: 10px;">
+                            <button class="btn-save" data-action="unequip" data-slot="${slot}" style="padding: 5px; font-size: 0.9em;">إزالة</button>
+                            <button class="btn-change" data-action="upgrade-level-equipped" data-slot="${slot}" style="padding: 5px; font-size: 0.85em;">
+                                ⬆️ مستوى (${self.getUpgradeLevelCost(item)} حجر + ${self.getUpgradeGoldCost(item)} ذهب)
+                            </button>
+                            <button class="btn-change" data-action="upgrade-quality-equipped" data-slot="${slot}" style="padding: 5px; font-size: 0.85em; background: #9C27B0;">
+                                ${self.getNextQuality(item.quality) ? `⭐ ${self.getNextQuality(item.quality)} (${self.getUpgradeQualityCost(item)} حجر + ${self.getUpgradeQualityGold(item)} ذهب)` : 'أقصى جودة'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            renderInventory() {
+                const self = this;
+                if (!this.playerData.inventory || this.playerData.inventory.length === 0) {
+                    return '<p style="text-align: center; opacity: 0.7; padding: 20px;">المخزن فارغ! اذهب للمناجم للحصول على عتاد</p>';
+                }
+
+                return this.playerData.inventory.map(function(item, index) {
+                    const qualityColors = {
+                        'عادي': '#9e9e9e',
+                        'نقي': '#4CAF50',
+                        'فريد': '#2196F3',
+                        'راقي': '#9C27B0',
+                        'فاخر': '#FF9800'
+                    };
+
+                    const stats = [];
+                    if (item.stats.health) stats.push(`❤️ ${Math.floor(item.stats.health)}`);
+                    if (item.stats.physicalAttack) stats.push(`⚔️ ${Math.floor(item.stats.physicalAttack)}`);
+                    if (item.stats.magicalAttack) stats.push(`✨ ${Math.floor(item.stats.magicalAttack)}`);
+                    if (item.stats.physicalDefense) stats.push(`🛡️ ${Math.floor(item.stats.physicalDefense)}`);
+                    if (item.stats.magicalDefense) stats.push(`🔮 ${Math.floor(item.stats.magicalDefense)}`);
+
+                    return `
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; border: 2px solid ${qualityColors[item.quality]};">
+                            <div style="text-align: center; margin-bottom: 10px;">
+                                <strong style="font-size: 1.2em;">${item.type}</strong><br/>
+                                <span style="color: ${qualityColors[item.quality]}; font-weight: bold;">${item.quality} +${item.level}</span>
+                            </div>
+                            <div style="font-size: 0.9em; margin-bottom: 10px;">
+                                ${stats.join(' | ')}
+                            </div>
+                            <div style="display: grid; gap: 5px;">
+                                <button class="btn-save" data-action="equip" data-index="${index}" style="width: 100%; padding: 8px;">تجهيز</button>
+                                <button class="btn-change" data-action="upgrade-level" data-index="${index}" style="width: 100%; padding: 8px;">
+                                    ترقية المستوى (${self.getUpgradeLevelCost(item)} حجر + ${self.getUpgradeGoldCost(item)} ذهب)
+                                </button>
+                                <button class="btn-change" data-action="upgrade-quality" data-index="${index}" style="width: 100%; padding: 8px; background: #9C27B0;">
+                                    ${self.getNextQuality(item.quality) ? `ترقية → ${self.getNextQuality(item.quality)} (${self.getUpgradeQualityCost(item)} حجر + ${self.getUpgradeQualityGold(item)} ذهب)` : 'الحد الأقصى'}
+                                </button>
+                                <button data-action="salvage" data-index="${index}" style="width: 100%; padding: 8px; background: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                                    🔨 تفكيك → (${self.getSalvageRewards(item)})
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            getUpgradeLevelCost(item) {
+                return item.level * 2;
+            }
+
+            getUpgradeGoldCost(item) {
+                return utils.formatNumber(item.level * 500);
+            }
+
+            getUpgradeQualityCost(item) {
+                const costs = {
+                    'عادي': 5,
+                    'نقي': 10,
+                    'فريد': 20,
+                    'راقي': 40
+                };
+                return costs[item.quality] || 0;
+            }
+
+            getUpgradeQualityGold(item) {
+                const costs = {
+                    'عادي': 5000,
+                    'نقي': 15000,
+                    'فريد': 40000,
+                    'راقي': 100000
+                };
+                return utils.formatNumber(costs[item.quality] || 0);
+            }
+
+            getNextQuality(current) {
+                const order = ['عادي', 'نقي', 'فريد', 'راقي', 'فاخر'];
+                const index = order.indexOf(current);
+                return index < order.length - 1 ? order[index + 1] : null;
+            }
+
+            getSalvageRewards(item) {
+                const qualityRewards = {
+                    'عادي': { levelStones: [1, 2], qualityStones: 0, gold: [100, 300] },
+                    'نقي': { levelStones: [2, 3], qualityStones: 1, gold: [500, 800] },
+                    'فريد': { levelStones: [3, 5], qualityStones: 2, gold: [1000, 1500] },
+                    'راقي': { levelStones: [5, 8], qualityStones: [3, 5], gold: [2000, 3000] },
+                    'فاخر': { levelStones: 10, qualityStones: 8, gold: [5000, 8000] }
+                };
+
+                const rewards = qualityRewards[item.quality];
+                let text = '';
+
+                if (Array.isArray(rewards.levelStones)) {
+                    text += `${rewards.levelStones[0]}-${rewards.levelStones[1]} 🔷`;
+                } else {
+                    text += `${rewards.levelStones} 🔷`;
+                }
+
+                if (rewards.qualityStones > 0) {
+                    if (Array.isArray(rewards.qualityStones)) {
+                        text += ` + ${rewards.qualityStones[0]}-${rewards.qualityStones[1]} 💎`;
+                    } else {
+                        text += ` + ${rewards.qualityStones} 💎`;
+                    }
+                }
+
+                text += ` + ${rewards.gold[0]}-${rewards.gold[1]} 💰`;
+                return text;
+            }
+
+            setupGearEvents() {
+                const self = this;
+                
+                document.querySelectorAll('[data-action="equip"]').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        self.equipItem(index);
+                    });
+                });
+
+                document.querySelectorAll('[data-action="unequip"]').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const slot = this.getAttribute('data-slot');
+                        self.unequipItem(slot);
+                    });
+                });
+
+                document.querySelectorAll('[data-action="upgrade-level"]').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        self.upgradeLevelItem(index);
+                    });
+                });
+
+                document.querySelectorAll('[data-action="upgrade-quality"]').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        self.upgradeQualityItem(index);
+                    });
+                });
+
+                document.querySelectorAll('[data-action="salvage"]').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        self.salvageItem(index);
+                    });
+                });
+
+                // ترقية العتاد الملبوس
+                document.querySelectorAll('[data-action="upgrade-level-equipped"]').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const slot = this.getAttribute('data-slot');
+                        self.upgradeLevelEquipped(slot);
+                    });
+                });
+
+                document.querySelectorAll('[data-action="upgrade-quality-equipped"]').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const slot = this.getAttribute('data-slot');
+                        self.upgradeQualityEquipped(slot);
+                    });
+                });
+            }
+
+            equipItem(index) {
+                const item = this.playerData.inventory[index];
+                if (!item) return;
+
+                const slotMap = {
+                    'خوذة': 'helmet',
+                    'درع': 'chest',
+                    'حذاء': 'boots',
+                    'قلادة': 'amulet',
+                    'خاتم': 'ring',
+                    'سلاح': 'weapon'
+                };
+
+                const slot = slotMap[item.type];
+                if (!slot) return;
+
+                // إزالة القطعة القديمة إذا موجودة
+                if (this.playerData.gear[slot]) {
+                    this.playerData.inventory.push(this.playerData.gear[slot]);
+                }
+
+                // تجهيز القطعة الجديدة
+                this.playerData.gear[slot] = item;
+                this.playerData.inventory.splice(index, 1);
+
+                this.savePlayerData();
+                this.showGear();
+                utils.showMessage('✅ تم تجهيز القطعة بنجاح!', 'success');
+            }
+
+            unequipItem(slot) {
+                if (!this.playerData.gear[slot]) return;
+
+                this.playerData.inventory.push(this.playerData.gear[slot]);
+                this.playerData.gear[slot] = null;
+
+                this.savePlayerData();
+                this.showGear();
+                utils.showMessage('✅ تم إزالة القطعة!', 'success');
+            }
+
+            upgradeLevelItem(index) {
+                const item = this.playerData.inventory[index];
+                if (!item) return;
+
+                const cost = this.getUpgradeLevelCost(item);
+                const gold = item.level * 500;
+
+                if (item.level >= this.playerData.progress.level) {
+                    utils.showMessage('❌ المستوى يجب أن يكون أقل من مستوى الشخصية!', 'error');
+                    return;
+                }
+
+                if ((this.playerData.resources.levelStones || 0) < cost) {
+                    utils.showMessage('❌ ليس لديك أحجار مستوى كافية!', 'error');
+                    return;
+                }
+
+                if (this.playerData.resources.gold < gold) {
+                    utils.showMessage('❌ ليس لديك ذهب كافٍ!', 'error');
+                    return;
+                }
+
+                this.playerData.resources.levelStones -= cost;
+                this.playerData.resources.gold -= gold;
+                item.level++;
+
+                // زيادة الإحصائيات
+                const multipliers = {
+                    'عادي': 1,
+                    'نقي': 1.5,
+                    'فريد': 2,
+                    'راقي': 3,
+                    'فاخر': 5
+                };
+                const mult = multipliers[item.quality] * 0.1;
+                
+                item.stats.health += utils.random(5, 10) * mult;
+                item.stats.physicalAttack += utils.random(1, 3) * mult;
+                item.stats.magicalAttack += utils.random(1, 3) * mult;
+                item.stats.physicalDefense += utils.random(1, 3) * mult;
+                item.stats.magicalDefense += utils.random(1, 3) * mult;
+
+                // تحديث مهمة التطوير
+                if (this.playerData.dailyMissions && this.playerData.dailyMissions[1]) {
+                    this.playerData.dailyMissions[1].progress++;
+                }
+
+                this.playerData.progress.experience += 200;
+                this.checkLevelUp();
+                this.savePlayerData();
+                this.showGear();
+                utils.showMessage('✅ تمت ترقية المستوى بنجاح!', 'success');
+            }
+
+            upgradeQualityItem(index) {
+                const item = this.playerData.inventory[index];
+                if (!item) return;
+
+                const nextQuality = this.getNextQuality(item.quality);
+                if (!nextQuality) {
+                    utils.showMessage('⚠️ هذه القطعة في الحد الأقصى!', 'error');
+                    return;
+                }
+
+                const cost = this.getUpgradeQualityCost(item);
+                const goldCost = parseInt(this.getUpgradeQualityGold(item).replace(/,/g, ''));
+
+                if (this.playerData.resources.qualityStones < cost) {
+                    utils.showMessage('❌ ليس لديك أحجار جودة كافية!', 'error');
+                    return;
+                }
+
+                if (this.playerData.resources.gold < goldCost) {
+                    utils.showMessage('❌ ليس لديك ذهب كافٍ!', 'error');
+                    return;
+                }
+
+                this.playerData.resources.qualityStones -= cost;
+                this.playerData.resources.gold -= goldCost;
+                item.quality = nextQuality;
+
+                // زيادة الإحصائيات بشكل كبير
+                const multipliers = {
+                    'نقي': 1.5,
+                    'فريد': 2,
+                    'راقي': 3,
+                    'فاخر': 5
+                };
+                const mult = multipliers[nextQuality];
+                
+                item.stats.health *= mult;
+                item.stats.physicalAttack *= mult;
+                item.stats.magicalAttack *= mult;
+                item.stats.physicalDefense *= mult;
+                item.stats.magicalDefense *= mult;
+
+                // تحديث مهمة التطوير
+                if (this.playerData.dailyMissions && this.playerData.dailyMissions[1]) {
+                    this.playerData.dailyMissions[1].progress++;
+                }
+
+                this.playerData.progress.experience += 500;
+                this.checkLevelUp();
+                this.savePlayerData();
+                this.showGear();
+                utils.showMessage(`🎉 تمت الترقية إلى ${nextQuality} بنجاح!`, 'success');
+            }
+
+            salvageItem(index) {
+                const item = this.playerData.inventory[index];
+                if (!item) return;
+
+                const qualityRewards = {
+                    'عادي': { levelStones: [1, 2], qualityStones: 0, gold: [100, 300] },
+                    'نقي': { levelStones: [2, 3], qualityStones: 1, gold: [500, 800] },
+                    'فريد': { levelStones: [3, 5], qualityStones: 2, gold: [1000, 1500] },
+                    'راقي': { levelStones: [5, 8], qualityStones: [3, 5], gold: [2000, 3000] },
+                    'فاخر': { levelStones: 10, qualityStones: 8, gold: [5000, 8000] }
+                };
+
+                const rewards = qualityRewards[item.quality];
+                
+                // حساب المكافآت
+                let levelStones, qualityStones, gold;
+                
+                if (Array.isArray(rewards.levelStones)) {
+                    levelStones = utils.random(rewards.levelStones[0], rewards.levelStones[1]);
+                } else {
+                    levelStones = rewards.levelStones;
+                }
+
+                if (Array.isArray(rewards.qualityStones)) {
+                    qualityStones = utils.random(rewards.qualityStones[0], rewards.qualityStones[1]);
+                } else {
+                    qualityStones = rewards.qualityStones;
+                }
+
+                gold = utils.random(rewards.gold[0], rewards.gold[1]);
+
+                // إضافة مكافأة المستوى
+                levelStones += Math.floor(item.level * 0.5);
+                gold += item.level * 100;
+
+                // إضافة الموارد
+                this.playerData.resources.levelStones = (this.playerData.resources.levelStones || 0) + levelStones;
+                this.playerData.resources.qualityStones += qualityStones;
+                this.playerData.resources.gold += gold;
+
+                // حذف القطعة
+                this.playerData.inventory.splice(index, 1);
+
+                this.savePlayerData();
+                this.showGear();
+                
+                utils.showMessage(`🔨 تم التفكيك! حصلت على: ${levelStones} 🔷 + ${qualityStones} 💎 + ${utils.formatNumber(gold)} 💰`, 'success');
+            }
+
+            showProfile() {
+                const self = this;
+                
+                // تهيئة بيانات الـ cosmetics إذا ما كانت موجودة
+                if (!this.playerData.cosmetics) {
+                    this.playerData.cosmetics = {
+                        equipped: {
+                            title: null,
+                            badge: null,
+                            nameColor: '#ffffff',
+                            border: 'default',
+                            theme: 'default'
+                        },
+                        owned: {
+                            titles: ['مبتدئ'],
+                            badges: ['⭐'],
+                            nameColors: ['#ffffff'],
+                            borders: ['default'],
+                            themes: ['default']
+                        }
+                    };
+                    this.savePlayerData();
+                }
+
+                const equipped = this.playerData.cosmetics.equipped;
+                const owned = this.playerData.cosmetics.owned;
+
+                // حساب قوة العتاد المجهز
+                let totalGearPower = 0;
+                for (let slot in this.playerData.gear) {
+                    const item = this.playerData.gear[slot];
+                    if (item) {
+                        totalGearPower += (item.stats.health || 0) + 
+                                         (item.stats.physicalAttack || 0) + 
+                                         (item.stats.magicalAttack || 0) + 
+                                         (item.stats.physicalDefense || 0) + 
+                                         (item.stats.magicalDefense || 0);
+                    }
+                }
+
+                document.getElementById('app').innerHTML = `
+                    <div class="main-container">
+                        <button class="back-btn" id="backBtn">رجوع</button>
+                        <h1 style="text-align: center; margin-bottom: 30px;">👤 الملف الشخصي</h1>
+                        
+                        <!-- بطاقة اللاعب -->
+                        <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3)); 
+                                    padding: 30px; border-radius: 15px; margin-bottom: 20px;
+                                    border: 3px solid ${this.getBorderColor(equipped.border)};">
+                            <div style="text-align: center;">
+                                <h1 style="font-size: 2.5em; color: ${equipped.nameColor}; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                                    ${equipped.title ? equipped.title + ' ' : ''}${this.playerData.username}${equipped.badge ? ' ' + equipped.badge : ''}
+                                </h1>
+                                <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap;">
+                                    <div class="stat">المستوى: ${this.playerData.progress.level}</div>
+                                    <div class="stat">قوة العتاد: ${utils.formatNumber(Math.floor(totalGearPower))}</div>
+                                    <div class="stat">الذهب الكلي: ${utils.formatNumber(this.playerData.resources.gold)}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- الإحصائيات التفصيلية -->
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                            <h2>📊 الإحصائيات</h2>
+                            <div class="stats-grid" style="margin-top: 15px;">
+                                <div class="stat">❤️ ${utils.formatNumber(this.playerData.stats.health)}</div>
+                                <div class="stat">⚔️ ${utils.formatNumber(this.playerData.stats.physicalAttack)}</div>
+                                <div class="stat">✨ ${utils.formatNumber(this.playerData.stats.magicalAttack)}</div>
+                                <div class="stat">🛡️ ${utils.formatNumber(this.playerData.stats.physicalDefense)}</div>
+                                <div class="stat">🔮 ${utils.formatNumber(this.playerData.stats.magicalDefense)}</div>
+                                <div class="stat">💥 ${this.playerData.stats.criticalChance}%</div>
+                            </div>
+                        </div>
+
+                        <!-- العتاد المجهز -->
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                            <h2>⚔️ العتاد المجهز</h2>
+                            <div class="stats-grid" style="margin-top: 15px;">
+                                ${this.renderProfileGear()}
+                            </div>
+                        </div>
+
+                        <!-- الـ Cosmetics -->
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                            <h2>🎨 المظاهر التجميلية</h2>
+                            
+                            <!-- الألقاب -->
+                            <div style="margin-top: 20px;">
+                                <h3>👑 الألقاب (${owned.titles.length})</h3>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 10px;">
+                                    ${owned.titles.map(function(title) {
+                                        const isEquipped = equipped.title === title;
+                                        return `
+                                            <div style="background: ${isEquipped ? 'rgba(76, 175, 80, 0.3)' : 'rgba(255,255,255,0.1)'}; 
+                                                        padding: 15px; border-radius: 8px; text-align: center;">
+                                                <strong>${title}</strong>
+                                                ${isEquipped ? '<br/><span style="color: #4CAF50;">✓ مجهز</span>' : 
+                                                `<br/><button class="btn-save" style="margin-top: 10px; padding: 5px 15px;" 
+                                                        onclick="gameApp.equipCosmetic('title', '${title}')">تجهيز</button>`}
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+
+                            <!-- الشارات -->
+                            <div style="margin-top: 20px;">
+                                <h3>🏅 الشارات (${owned.badges.length})</h3>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 10px;">
+                                    ${owned.badges.map(function(badge) {
+                                        const isEquipped = equipped.badge === badge;
+                                        return `
+                                            <div style="background: ${isEquipped ? 'rgba(76, 175, 80, 0.3)' : 'rgba(255,255,255,0.1)'}; 
+                                                        padding: 15px; border-radius: 8px; text-align: center; font-size: 2em;">
+                                                ${badge}
+                                                ${isEquipped ? '<br/><span style="color: #4CAF50; font-size: 0.5em;">✓ مجهز</span>' : 
+                                                `<br/><button class="btn-save" style="margin-top: 10px; padding: 5px 15px; font-size: 0.5em;" 
+                                                        onclick="gameApp.equipCosmetic('badge', '${badge}')">تجهيز</button>`}
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+
+                            <!-- ألوان الاسم -->
+                            <div style="margin-top: 20px;">
+                                <h3>🎨 ألوان الاسم (${owned.nameColors.length})</h3>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 10px;">
+                                    ${owned.nameColors.map(function(color) {
+                                        const isEquipped = equipped.nameColor === color;
+                                        return `
+                                            <div style="background: ${isEquipped ? 'rgba(76, 175, 80, 0.3)' : 'rgba(255,255,255,0.1)'}; 
+                                                        padding: 15px; border-radius: 8px; text-align: center;">
+                                                <div style="width: 50px; height: 50px; background: ${color}; 
+                                                            border-radius: 50%; margin: 0 auto 10px;"></div>
+                                                ${isEquipped ? '<span style="color: #4CAF50;">✓ مجهز</span>' : 
+                                                `<button class="btn-save" style="padding: 5px 15px;" 
+                                                        onclick="gameApp.equipCosmetic('nameColor', '${color}')">تجهيز</button>`}
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+
+                            <!-- الإطارات -->
+                            <div style="margin-top: 20px;">
+                                <h3>🖼️ الإطارات (${owned.borders.length})</h3>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 10px;">
+                                    ${owned.borders.map(function(border) {
+                                        const isEquipped = equipped.border === border;
+                                        return `
+                                            <div style="background: ${isEquipped ? 'rgba(76, 175, 80, 0.3)' : 'rgba(255,255,255,0.1)'}; 
+                                                        padding: 15px; border-radius: 8px; text-align: center;
+                                                        border: 3px solid ${self.getBorderColor(border)};">
+                                                <strong>${self.getBorderName(border)}</strong>
+                                                ${isEquipped ? '<br/><span style="color: #4CAF50;">✓ مجهز</span>' : 
+                                                `<br/><button class="btn-save" style="margin-top: 10px; padding: 5px 15px;" 
+                                                        onclick="gameApp.equipCosmetic('border', '${border}')">تجهيز</button>`}
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('backBtn').addEventListener('click', function() {
+                    self.showMainPage();
+                });
+            }
+
+            renderProfileGear() {
+                const gear = this.playerData.gear;
+                const slots = [
+                    { key: 'helmet', label: '⛑️ الخوذة' },
+                    { key: 'chest', label: '🛡️ الدرع' },
+                    { key: 'boots', label: '👢 الحذاء' },
+                    { key: 'amulet', label: '📿 القلادة' },
+                    { key: 'ring', label: '💍 الخاتم' },
+                    { key: 'weapon', label: '⚔️ السلاح' }
+                ];
+
+                return slots.map(function(slot) {
+                    const item = gear[slot.key];
+                    if (!item) {
+                        return `<div class="stat" style="opacity: 0.5;">${slot.label}<br/>فارغ</div>`;
+                    }
+                    
+                    const qualityColors = {
+                        'عادي': '#9e9e9e',
+                        'نقي': '#4CAF50',
+                        'فريد': '#2196F3',
+                        'راقي': '#9C27B0',
+                        'فاخر': '#FF9800'
+                    };
+
+                    return `
+                        <div class="stat" style="border: 2px solid ${qualityColors[item.quality]};">
+                            ${slot.label}<br/>
+                            <span style="color: ${qualityColors[item.quality]};">${item.quality} +${item.level}</span>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            getBorderColor(border) {
+                const colors = {
+                    'default': '#ffffff',
+                    'bronze': '#CD7F32',
+                    'silver': '#C0C0C0',
+                    'gold': '#FFD700',
+                    'diamond': '#B9F2FF',
+                    'legendary': '#FF6B6B'
+                };
+                return colors[border] || '#ffffff';
+            }
+
+            getBorderName(border) {
+                const names = {
+                    'default': 'عادي',
+                    'bronze': 'برونزي',
+                    'silver': 'فضي',
+                    'gold': 'ذهبي',
+                    'diamond': 'ماسي',
+                    'legendary': 'أسطوري'
+                };
+                return names[border] || border;
+            }
+
+            equipCosmetic(type, value) {
+                if (!this.playerData.cosmetics) {
+                    this.playerData.cosmetics = {
+                        equipped: {},
+                        owned: { titles: [], badges: [], nameColors: [], borders: [], themes: [] }
+                    };
+                }
+
+                this.playerData.cosmetics.equipped[type] = value;
+                this.savePlayerData();
+                this.showProfile();
+                utils.showMessage('✅ تم تجهيز المظهر بنجاح!', 'success');
+            }
+
+            showPlayers() {
+                const self = this;
+                
+                document.getElementById('app').innerHTML = `
+                    <div class="main-container">
+                        <button class="back-btn" id="backBtn">رجوع</button>
+                        <h1 style="text-align: center; margin-bottom: 30px;">👥 اللاعبين</h1>
+                        
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
+                            <div class="loading-spinner" style="margin: 20px auto;"></div>
+                            <p>جاري تحميل قائمة اللاعبين...</p>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('backBtn').addEventListener('click', function() {
+                    self.showMainPage();
+                });
+
+                // تحميل قائمة اللاعبين
+                this.loadPlayers();
+            }
+
+            loadPlayers() {
+                const self = this;
+                
+                db.collection('players')
+                    .orderBy('progress.level', 'desc')
+                    .limit(50)
+                    .get()
+                    .then(function(querySnapshot) {
+                        const players = [];
+                        querySnapshot.forEach(function(doc) {
+                            players.push({ id: doc.id, ...doc.data() });
+                        });
+                        self.renderPlayers(players);
+                    })
+                    .catch(function(error) {
+                        console.error('Error loading players:', error);
+                        utils.showMessage('❌ خطأ في تحميل اللاعبين', 'error');
+                        self.showMainPage();
+                    });
+            }
+
+            renderPlayers(players) {
+                const self = this;
+                
+                const playersHTML = players.map(function(player, index) {
+                    const totalPower = (player.stats.health || 0) + 
+                                      (player.stats.physicalAttack || 0) + 
+                                      (player.stats.magicalAttack || 0) +
+                                      (player.stats.physicalDefense || 0) +
+                                      (player.stats.magicalDefense || 0);
+
+                    const rankEmoji = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `#${index + 1}`;
+
+                    return `
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 15px;
+                                    cursor: pointer; transition: transform 0.2s, background 0.2s;"
+                             onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(255,255,255,0.15)';"
+                             onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.1)';"
+                             onclick="gameApp.showPlayerProfile('${player.id}')">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                                <div style="display: flex; align-items: center; gap: 15px;">
+                                    <span style="font-size: 1.5em; font-weight: bold;">${rankEmoji}</span>
+                                    <div>
+                                        <h3 style="color: ${player.cosmetics?.equipped?.nameColor || '#ffffff'};">
+                                            ${player.cosmetics?.equipped?.title ? player.cosmetics.equipped.title + ' ' : ''}
+                                            ${player.username || player.displayName}
+                                            ${player.cosmetics?.equipped?.badge || ''}
+                                        </h3>
+                                        <div style="font-size: 0.9em; opacity: 0.8; margin-top: 5px;">
+                                            المستوى ${player.progress?.level || 1} | القوة الكلية: ${utils.formatNumber(Math.floor(totalPower))}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="text-align: left;">
+                                    <button style="padding: 8px 20px; background: #2196F3; color: white; border: none; 
+                                                   border-radius: 5px; cursor: pointer;">
+                                        عرض الملف الشخصي →
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                document.getElementById('app').innerHTML = `
+                    <div class="main-container">
+                        <button class="back-btn" id="backBtn">رجوع</button>
+                        <h1 style="text-align: center; margin-bottom: 30px;">👥 اللاعبين (${players.length})</h1>
+                        
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                            <h2 style="margin-bottom: 15px;">🏆 لوحة المتصدرين</h2>
+                            ${playersHTML}
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('backBtn').addEventListener('click', function() {
+                    self.showMainPage();
+                });
+            }
+
+            showPlayerProfile(playerId) {
+                const self = this;
+                
+                document.getElementById('app').innerHTML = `
+                    <div class="main-container">
+                        <button class="back-btn" id="backToPlayersBtn">رجوع للاعبين</button>
+                        <h1 style="text-align: center; margin-bottom: 30px;">👤 الملف الشخصي</h1>
+                        
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
+                            <div class="loading-spinner" style="margin: 20px auto;"></div>
+                            <p>جاري تحميل الملف الشخصي...</p>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('backToPlayersBtn').addEventListener('click', function() {
+                    self.showPlayers();
+                });
+
+                // تحميل بيانات اللاعب
+                db.collection('players').doc(playerId).get()
+                    .then(function(doc) {
+                        if (doc.exists) {
+                            self.renderPlayerProfile(doc.data());
+                        } else {
+                            utils.showMessage('❌ اللاعب غير موجود', 'error');
+                            self.showPlayers();
+                        }
+                    })
+                    .catch(function(error) {
+                        console.error('Error loading player:', error);
+                        utils.showMessage('❌ خطأ في تحميل البيانات', 'error');
+                        self.showPlayers();
+                    });
+            }
+
+            renderPlayerProfile(playerData) {
+                const self = this;
+                
+                if (!playerData.cosmetics) {
+                    playerData.cosmetics = {
+                        equipped: {
+                            title: null,
+                            badge: null,
+                            nameColor: '#ffffff',
+                            border: 'default'
+                        }
+                    };
+                }
+
+                const equipped = playerData.cosmetics.equipped;
+
+                let totalGearPower = 0;
+                for (let slot in playerData.gear) {
+                    const item = playerData.gear[slot];
+                    if (item) {
+                        totalGearPower += (item.stats.health || 0) + 
+                                         (item.stats.physicalAttack || 0) + 
+                                         (item.stats.magicalAttack || 0) + 
+                                         (item.stats.physicalDefense || 0) + 
+                                         (item.stats.magicalDefense || 0);
+                    }
+                }
+
+                document.getElementById('app').innerHTML = `
+                    <div class="main-container">
+                        <button class="back-btn" id="backToPlayersBtn">رجوع للاعبين</button>
+                        <h1 style="text-align: center; margin-bottom: 30px;">👤 الملف الشخصي</h1>
+                        
+                        <!-- بطاقة اللاعب -->
+                        <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3)); 
+                                    padding: 30px; border-radius: 15px; margin-bottom: 20px;
+                                    border: 3px solid ${this.getBorderColor(equipped.border)};">
+                            <div style="text-align: center;">
+                                <h1 style="font-size: 2.5em; color: ${equipped.nameColor}; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                                    ${equipped.title ? equipped.title + ' ' : ''}${playerData.username || playerData.displayName}${equipped.badge ? ' ' + equipped.badge : ''}
+                                </h1>
+                                <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap;">
+                                    <div class="stat">المستوى: ${playerData.progress?.level || 1}</div>
+                                    <div class="stat">قوة العتاد: ${utils.formatNumber(Math.floor(totalGearPower))}</div>
+                                    <div class="stat">الذهب الكلي: ${utils.formatNumber(playerData.resources?.gold || 0)}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- الإحصائيات -->
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                            <h2>📊 الإحصائيات</h2>
+                            <div class="stats-grid" style="margin-top: 15px;">
+                                <div class="stat">❤️ ${utils.formatNumber(playerData.stats?.health || 0)}</div>
+                                <div class="stat">⚔️ ${utils.formatNumber(playerData.stats?.physicalAttack || 0)}</div>
+                                <div class="stat">✨ ${utils.formatNumber(playerData.stats?.magicalAttack || 0)}</div>
+                                <div class="stat">🛡️ ${utils.formatNumber(playerData.stats?.physicalDefense || 0)}</div>
+                                <div class="stat">🔮 ${utils.formatNumber(playerData.stats?.magicalDefense || 0)}</div>
+                                <div class="stat">💥 ${playerData.stats?.criticalChance || 0}%</div>
+                                <div class="stat">🛡️ ${playerData.stats?.tenacity || 0}%</div>
+                            </div>
+                        </div>
+
+                        <!-- العتاد المجهز -->
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                            <h2>⚔️ العتاد المجهز</h2>
+                            <div class="stats-grid" style="margin-top: 15px;">
+                                ${this.renderProfileGearForPlayer(playerData.gear)}
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('backToPlayersBtn').addEventListener('click', function() {
+                    self.showPlayers();
+                });
+            }
+
+            renderProfileGearForPlayer(gear) {
+                const slots = [
+                    { key: 'helmet', label: '⛑️ الخوذة' },
+                    { key: 'chest', label: '🛡️ الدرع' },
+                    { key: 'boots', label: '👢 الحذاء' },
+                    { key: 'amulet', label: '📿 القلادة' },
+                    { key: 'ring', label: '💍 الخاتم' },
+                    { key: 'weapon', label: '⚔️ السلاح' }
+                ];
+
+                return slots.map(function(slot) {
+                    const item = gear[slot.key];
+                    if (!item) {
+                        return `<div class="stat" style="opacity: 0.5;">${slot.label}<br/>فارغ</div>`;
+                    }
+                    
+                    const qualityColors = {
+                        'عادي': '#9e9e9e',
+                        'نقي': '#4CAF50',
+                        'فريد': '#2196F3',
+                        'راقي': '#9C27B0',
+                        'فاخر': '#FF9800'
+                    };
+
+                    return `
+                        <div class="stat" style="border: 2px solid ${qualityColors[item.quality]};">
+                            ${slot.label}<br/>
+                            <span style="color: ${qualityColors[item.quality]};">${item.quality} +${item.level}</span>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            upgradeLevelEquipped(slot) {
+                const item = this.playerData.gear[slot];
+                if (!item) return;
+
+                const cost = this.getUpgradeLevelCost(item);
+                const gold = item.level * 500;
+
+                if (item.level >= 100) {
+                    utils.showMessage('❌ المستوى الأقصى هو 100!', 'error');
+                    return;
+                }
+
+                if ((this.playerData.resources.levelStones || 0) < cost) {
+                    utils.showMessage('❌ ليس لديك أحجار مستوى كافية!', 'error');
+                    return;
+                }
+
+                if (this.playerData.resources.gold < gold) {
+                    utils.showMessage('❌ ليس لديك ذهب كافٍ!', 'error');
+                    return;
+                }
+
+                this.playerData.resources.levelStones -= cost;
+                this.playerData.resources.gold -= gold;
+                item.level++;
+
+                const multipliers = {
+                    'عادي': 1,
+                    'نقي': 1.5,
+                    'فريد': 2,
+                    'راقي': 3,
+                    'فاخر': 5
+                };
+                const mult = multipliers[item.quality] * 0.1;
+                
+                item.stats.health += utils.random(5, 10) * mult;
+                item.stats.physicalAttack += utils.random(1, 3) * mult;
+                item.stats.magicalAttack += utils.random(1, 3) * mult;
+                item.stats.physicalDefense += utils.random(1, 3) * mult;
+                item.stats.magicalDefense += utils.random(1, 3) * mult;
+
+                if (this.playerData.dailyMissions && this.playerData.dailyMissions[1]) {
+                    this.playerData.dailyMissions[1].progress++;
+                }
+
+                this.playerData.progress.experience += 200;
+                this.checkLevelUp();
+                this.savePlayerData();
+                this.showGear();
+                utils.showMessage('✅ تمت ترقية المستوى بنجاح!', 'success');
+            }
+
+            upgradeQualityEquipped(slot) {
+                const item = this.playerData.gear[slot];
+                if (!item) return;
+
+                const nextQuality = this.getNextQuality(item.quality);
+                if (!nextQuality) {
+                    utils.showMessage('⚠️ هذه القطعة في الحد الأقصى!', 'error');
+                    return;
+                }
+
+                const cost = this.getUpgradeQualityCost(item);
+                const goldCost = parseInt(this.getUpgradeQualityGold(item).replace(/,/g, ''));
+
+                if (this.playerData.resources.qualityStones < cost) {
+                    utils.showMessage('❌ ليس لديك أحجار جودة كافية!', 'error');
+                    return;
+                }
+
+                if (this.playerData.resources.gold < goldCost) {
+                    utils.showMessage('❌ ليس لديك ذهب كافٍ!', 'error');
+                    return;
+                }
+
+                this.playerData.resources.qualityStones -= cost;
+                this.playerData.resources.gold -= goldCost;
+                item.quality = nextQuality;
+
+                const multipliers = {
+                    'نقي': 1.5,
+                    'فريد': 2,
+                    'راقي': 3,
+                    'فاخر': 5
+                };
+                const mult = multipliers[nextQuality];
+                
+                item.stats.health *= mult;
+                item.stats.physicalAttack *= mult;
+                item.stats.magicalAttack *= mult;
+                item.stats.physicalDefense *= mult;
+                item.stats.magicalDefense *= mult;
+
+                if (this.playerData.dailyMissions && this.playerData.dailyMissions[1]) {
+                    this.playerData.dailyMissions[1].progress++;
+                }
+
+                this.playerData.progress.experience += 500;
+                this.checkLevelUp();
+                this.savePlayerData();
+                this.showGear();
+                utils.showMessage(`🎉 تمت الترقية إلى ${nextQuality} بنجاح!`, 'success');
             }
         }
 
@@ -409,14 +2629,205 @@
                 const self = this;
                 console.log('Initializing auth system...');
                 auth.onAuthStateChanged(function(user) {
-                    console.log('Auth state changed:', user ? 'logged in' : 'logged out');
+                    console.log('User state:', user ? 'logged in' : 'not logged in');
                     self.user = user;
-                    if (user) {
-                        self.gameApp.init(user);
-                    } else {
-                        self.showLogin();
-                    }
+                    self.onAuthStateChange(user);
                 });
+            }
+
+            async getUsernameByEmail(email) {
+                try {
+                    const querySnapshot = await db.collection('usernames').where('email', '==', email).get();
+                    if (!querySnapshot.empty) {
+                        return querySnapshot.docs[0].data().username;
+                    }
+                    return null;
+                } catch (error) {
+                    console.error('Error getting username:', error);
+                    return null;
+                }
+            }
+
+            async getEmailByUsername(username) {
+                try {
+                    const doc = await db.collection('usernames').doc(username.toLowerCase()).get();
+                    if (doc.exists) {
+                        return doc.data().email;
+                    }
+                    return null;
+                } catch (error) {
+                    console.error('Error getting email:', error);
+                    return null;
+                }
+            }
+
+            register(username, email, password) {
+                const self = this;
+                console.log('Creating new account...');
+                
+                return db.collection('usernames').doc(username.toLowerCase()).get()
+                    .then(function(doc) {
+                        if (doc.exists) {
+                            return { success: false, error: 'اسم المستخدم موجود بالفعل' };
+                        }
+                        
+                        return auth.createUserWithEmailAndPassword(email, password)
+                            .then(function(result) {
+                                return db.collection('usernames').doc(username.toLowerCase()).set({
+                                    username: username,
+                                    email: email,
+                                    userId: result.user.uid
+                                }).then(function() {
+                                    return result.user.updateProfile({ displayName: username })
+                                        .then(function() {
+                                            return self.createPlayerData(result.user.uid, username);
+                                        })
+                                        .then(function() {
+                                            return { success: true, user: result.user };
+                                        });
+                                });
+                            })
+                            .catch(function(error) {
+                                console.error('Error creating account:', error);
+                                return { success: false, error: self.getArabicError(error.code) };
+                            });
+                    });
+            }
+
+            createPlayerData(userId, username) {
+                console.log('Creating player data...');
+                const playerData = {
+                    username: username,
+                    stats: {
+                        health: 1000,
+                        physicalAttack: 100,
+                        magicalAttack: 80,
+                        physicalDefense: 80,
+                        magicalDefense: 60,
+                        criticalChance: 5,
+                        tenacity: 5,
+                        speed: 10,
+                        luck: 5
+                    },
+                    resources: {
+                        dailyCards: 100,
+                        gold: 50000,
+                        qualityStones: 10,
+                        levelStones: 15,
+                        energyPoints: 10
+                    },
+                    gear: {
+                        helmet: null,
+                        amulet: null,
+                        ring: null,
+                        weapon: null,
+                        boots: null,
+                        chest: null
+                    },
+                    progress: {
+                        level: 1,
+                        experience: 0,
+                        totalUpgrades: 0,
+                        mineEntries: 0,
+                        lastDailyReset: new Date().toISOString()
+                    },
+                    gates: {
+                        lion: { 
+                            health: { value: 0, level: 1 },
+                            physicalAttack: { value: 0, level: 1 },
+                            magicalAttack: { value: 0, level: 1 },
+                            physicalDefense: { value: 0, level: 1 },
+                            magicalDefense: { value: 0, level: 1 },
+                            critical: { value: 0, level: 1 },
+                            tenacity: { value: 0, level: 1 }
+                        },
+                        dragon: { 
+                            health: { value: 0, level: 1 },
+                            physicalAttack: { value: 0, level: 1 },
+                            magicalAttack: { value: 0, level: 1 },
+                            physicalDefense: { value: 0, level: 1 },
+                            magicalDefense: { value: 0, level: 1 },
+                            critical: { value: 0, level: 1 },
+                            tenacity: { value: 0, level: 1 }
+                        },
+                        phoenix: { 
+                            health: { value: 0, level: 1 },
+                            physicalAttack: { value: 0, level: 1 },
+                            magicalAttack: { value: 0, level: 1 },
+                            physicalDefense: { value: 0, level: 1 },
+                            magicalDefense: { value: 0, level: 1 },
+                            critical: { value: 0, level: 1 },
+                            tenacity: { value: 0, level: 1 }
+                        },
+                        wolf: { 
+                            health: { value: 0, level: 1 },
+                            physicalAttack: { value: 0, level: 1 },
+                            magicalAttack: { value: 0, level: 1 },
+                            physicalDefense: { value: 0, level: 1 },
+                            magicalDefense: { value: 0, level: 1 },
+                            critical: { value: 0, level: 1 },
+                            tenacity: { value: 0, level: 1 }
+                        }
+                    },
+                    inventory: [],
+                    dailyMissions: [],
+                    createdAt: new Date().toISOString(),
+                    lastLogin: new Date().toISOString()
+                };
+
+                return db.collection('players').doc(userId).set(playerData)
+                    .then(function() {
+                        console.log('Player data created');
+                    });
+            }
+
+            login(username, password) {
+                const self = this;
+                console.log('Logging in...');
+                
+                return this.getEmailByUsername(username)
+                    .then(function(email) {
+                        if (!email) {
+                            return { success: false, error: 'اسم المستخدم غير موجود' };
+                        }
+                        
+                        return auth.signInWithEmailAndPassword(email, password)
+                            .then(function(result) {
+                                return { success: true, user: result.user };
+                            })
+                            .catch(function(error) {
+                                console.error('Error logging in:', error);
+                                return { success: false, error: self.getArabicError(error.code) };
+                            });
+                    });
+            }
+
+            resetPassword(usernameOrEmail) {
+                const self = this;
+                
+                return this.getEmailByUsername(usernameOrEmail)
+                    .then(function(email) {
+                        const targetEmail = email || usernameOrEmail;
+                        
+                        return auth.sendPasswordResetEmail(targetEmail)
+                            .then(function() {
+                                return { success: true, message: 'تم إرسال رابط إعادة تعيين كلمة المرور على بريدك الإلكتروني' };
+                            })
+                            .catch(function(error) {
+                                console.error('Error sending reset email:', error);
+                                return { success: false, error: self.getArabicError(error.code) };
+                            });
+                    });
+            }
+
+            onAuthStateChange(user) {
+                if (user) {
+                    console.log('User logged in');
+                    this.gameApp.init(user);
+                } else {
+                    console.log('Showing login page');
+                    this.showLogin();
+                }
             }
 
             showLogin() {
@@ -426,17 +2837,19 @@
                         <div class="login-form">
                             <h1>🎮 لعبة الأبطال</h1>
                             <form id="authForm">
-                                <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+                                <input type="text" id="username" placeholder="اسم المستخدم" required>
                                 <input type="password" id="password" placeholder="كلمة المرور" required>
+                                <input type="email" id="email" placeholder="البريد الإلكتروني (للمستخدمين الجدد)" style="display: none;">
                                 <button type="submit" id="loginBtn">تسجيل الدخول</button>
                                 <button type="button" id="registerBtn">إنشاء حساب</button>
+                                <div class="forgot-password" id="forgotPassword">نسيت كلمة المرور؟</div>
                             </form>
                             <div id="authMessage"></div>
                         </div>
                     </div>
                 `;
 
-                document.getElementById('authForm').addEventListener('submit', function(e) {
+                document.getElementById('loginBtn').addEventListener('click', function(e) {
                     e.preventDefault();
                     self.handleLogin();
                 });
@@ -445,35 +2858,94 @@
                     e.preventDefault();
                     self.handleRegister();
                 });
+
+                document.getElementById('forgotPassword').addEventListener('click', function() {
+                    self.showResetPassword();
+                });
+            }
+
+            showResetPassword() {
+                const self = this;
+                document.getElementById('app').innerHTML = `
+                    <div class="login-container">
+                        <div class="login-form">
+                            <h1>🔑 إعادة تعيين كلمة المرور</h1>
+                            <form id="resetForm">
+                                <input type="text" id="resetUsernameOrEmail" placeholder="اسم المستخدم أو البريد الإلكتروني" required>
+                                <button type="submit" id="sendResetBtn">إرسال رابط الاسترجاع</button>
+                                <button type="button" id="backToLoginBtn" style="background: #666;">رجوع</button>
+                            </form>
+                            <div id="authMessage"></div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('sendResetBtn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    self.handleResetPassword();
+                });
+
+                document.getElementById('backToLoginBtn').addEventListener('click', function() {
+                    self.showLogin();
+                });
+            }
+
+            handleResetPassword() {
+                const self = this;
+                const usernameOrEmail = document.getElementById('resetUsernameOrEmail').value;
+                
+                if (!usernameOrEmail) {
+                    this.showAuthMessage({ success: false, error: 'يرجى إدخال اسم المستخدم أو البريد الإلكتروني' });
+                    return;
+                }
+
+                this.resetPassword(usernameOrEmail).then(function(result) {
+                    self.showAuthMessage(result);
+                    if (result.success) {
+                        setTimeout(function() {
+                            self.showLogin();
+                        }, 3000);
+                    }
+                });
             }
 
             handleLogin() {
                 const self = this;
-                const email = document.getElementById('email').value;
+                const username = document.getElementById('username').value;
                 const password = document.getElementById('password').value;
                 
-                if (!email || !password) {
-                    this.showAuthMessage({ success: false, error: 'يرجى إدخال البريد الإلكتروني وكلمة المرور' });
+                if (!username || !password) {
+                    this.showAuthMessage({ success: false, error: 'يرجى إدخال اسم المستخدم وكلمة المرور' });
                     return;
                 }
 
-                auth.signInWithEmailAndPassword(email, password)
-                    .then(function(result) {
-                        console.log('Login successful');
-                    })
-                    .catch(function(error) {
-                        console.error('Login error:', error);
-                        self.showAuthMessage({ success: false, error: self.getArabicError(error.code) });
-                    });
+                this.login(username, password).then(function(result) {
+                    self.showAuthMessage(result);
+                });
             }
 
             handleRegister() {
+                const emailField = document.getElementById('email');
+                
+                if (emailField.style.display === 'none') {
+                    emailField.style.display = 'block';
+                    document.getElementById('registerBtn').innerHTML = 'تأكيد إنشاء الحساب';
+                    document.getElementById('loginBtn').innerHTML = 'إلغاء';
+                    return;
+                }
+                
                 const self = this;
+                const username = document.getElementById('username').value;
                 const email = document.getElementById('email').value;
                 const password = document.getElementById('password').value;
                 
-                if (!email || !password) {
-                    this.showAuthMessage({ success: false, error: 'يرجى إدخال البريد الإلكتروني وكلمة المرور' });
+                if (!username || !email || !password) {
+                    this.showAuthMessage({ success: false, error: 'يرجى إدخال جميع الحقول' });
+                    return;
+                }
+
+                if (username.length < 3) {
+                    this.showAuthMessage({ success: false, error: 'اسم المستخدم يجب أن يكون 3 أحرف على الأقل' });
                     return;
                 }
 
@@ -482,15 +2954,9 @@
                     return;
                 }
 
-                auth.createUserWithEmailAndPassword(email, password)
-                    .then(function(result) {
-                        console.log('Registration successful');
-                        return self.gameApp.createPlayerData(result.user.uid, email.split('@')[0]);
-                    })
-                    .catch(function(error) {
-                        console.error('Registration error:', error);
-                        self.showAuthMessage({ success: false, error: self.getArabicError(error.code) });
-                    });
+                this.register(username, email, password).then(function(result) {
+                    self.showAuthMessage(result);
+                });
             }
 
             showAuthMessage(result) {
@@ -517,21 +2983,10 @@
             }
         }
 
-        // بدء التطبيق
         let authSystem;
         window.addEventListener('load', function() {
             console.log('Page loaded - Starting app');
-            try {
-                authSystem = new AuthSystem();
-            } catch (error) {
-                console.error('Error starting app:', error);
-                document.getElementById('app').innerHTML = `
-                    <div class="loading">
-                        <h2 style="color: #f44336;">❌ خطأ في بدء التطبيق</h2>
-                        <p>${error.message}</p>
-                    </div>
-                `;
-            }
+            authSystem = new AuthSystem();
         });
     </script>
 </body>
