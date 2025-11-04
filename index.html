@@ -1471,19 +1471,92 @@
             }
 
             applyGateBonuses() {
+                // التحقق من وجود البوابات وتحويلها للنظام الجديد
+                if (!this.playerData.gates) {
+                    this.playerData.gates = {
+                        lion: { 
+                            health: { value: 0, level: 1 },
+                            physicalAttack: { value: 0, level: 1 },
+                            magicalAttack: { value: 0, level: 1 },
+                            physicalDefense: { value: 0, level: 1 },
+                            magicalDefense: { value: 0, level: 1 },
+                            critical: { value: 0, level: 1 },
+                            tenacity: { value: 0, level: 1 }
+                        },
+                        dragon: { 
+                            health: { value: 0, level: 1 },
+                            physicalAttack: { value: 0, level: 1 },
+                            magicalAttack: { value: 0, level: 1 },
+                            physicalDefense: { value: 0, level: 1 },
+                            magicalDefense: { value: 0, level: 1 },
+                            critical: { value: 0, level: 1 },
+                            tenacity: { value: 0, level: 1 }
+                        },
+                        phoenix: { 
+                            health: { value: 0, level: 1 },
+                            physicalAttack: { value: 0, level: 1 },
+                            magicalAttack: { value: 0, level: 1 },
+                            physicalDefense: { value: 0, level: 1 },
+                            magicalDefense: { value: 0, level: 1 },
+                            critical: { value: 0, level: 1 },
+                            tenacity: { value: 0, level: 1 }
+                        },
+                        wolf: { 
+                            health: { value: 0, level: 1 },
+                            physicalAttack: { value: 0, level: 1 },
+                            magicalAttack: { value: 0, level: 1 },
+                            physicalDefense: { value: 0, level: 1 },
+                            magicalDefense: { value: 0, level: 1 },
+                            critical: { value: 0, level: 1 },
+                            tenacity: { value: 0, level: 1 }
+                        }
+                    };
+                }
+
+                // تحويل البيانات القديمة للنظام الجديد
+                for (let gateId in this.playerData.gates) {
+                    const gate = this.playerData.gates[gateId];
+                    for (let stat in gate) {
+                        if (typeof gate[stat] === 'number') {
+                            gate[stat] = { value: gate[stat], level: 1 };
+                        } else if (!gate[stat] || typeof gate[stat] !== 'object') {
+                            gate[stat] = { value: 0, level: 1 };
+                        } else if (gate[stat].value === undefined || gate[stat].level === undefined) {
+                            gate[stat] = { value: gate[stat].value || 0, level: gate[stat].level || 1 };
+                        }
+                    }
+                }
+
                 // حساب المجاميع والترتيب
                 const gates = this.playerData.gates;
                 const totals = [];
                 
                 for (let gateId in gates) {
                     const gate = gates[gateId];
-                    const total = (gate.health.value * gate.health.level) + 
-                                 (gate.physicalAttack.value * gate.physicalAttack.level) +
-                                 (gate.magicalAttack.value * gate.magicalAttack.level) + 
-                                 (gate.physicalDefense.value * gate.physicalDefense.level) +
-                                 (gate.magicalDefense.value * gate.magicalDefense.level) +
-                                 (gate.critical.value * gate.critical.level) +
-                                 (gate.tenacity.value * gate.tenacity.level);
+                    let total = 0;
+                    
+                    if (gate.health && gate.health.value !== undefined) {
+                        total += (gate.health.value * gate.health.level);
+                    }
+                    if (gate.physicalAttack && gate.physicalAttack.value !== undefined) {
+                        total += (gate.physicalAttack.value * gate.physicalAttack.level);
+                    }
+                    if (gate.magicalAttack && gate.magicalAttack.value !== undefined) {
+                        total += (gate.magicalAttack.value * gate.magicalAttack.level);
+                    }
+                    if (gate.physicalDefense && gate.physicalDefense.value !== undefined) {
+                        total += (gate.physicalDefense.value * gate.physicalDefense.level);
+                    }
+                    if (gate.magicalDefense && gate.magicalDefense.value !== undefined) {
+                        total += (gate.magicalDefense.value * gate.magicalDefense.level);
+                    }
+                    if (gate.critical && gate.critical.value !== undefined) {
+                        total += (gate.critical.value * gate.critical.level);
+                    }
+                    if (gate.tenacity && gate.tenacity.value !== undefined) {
+                        total += (gate.tenacity.value * gate.tenacity.level);
+                    }
+                    
                     totals.push({ id: gateId, total: total });
                 }
                 
@@ -2722,6 +2795,15 @@
                         tenacity: 5,
                         speed: 10,
                         luck: 5
+                    },
+                    baseStats: {
+                        health: 1000,
+                        physicalAttack: 100,
+                        magicalAttack: 80,
+                        physicalDefense: 80,
+                        magicalDefense: 60,
+                        criticalChance: 5,
+                        tenacity: 5
                     },
                     resources: {
                         dailyCards: 100,
